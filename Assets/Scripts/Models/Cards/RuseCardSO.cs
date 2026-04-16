@@ -1,22 +1,18 @@
+using Assets.Scripts.Models.ValueTypes;
 using UnityEngine;
 
-namespace Assets.Scripts.Models.Cards.SOs
+namespace Assets.Scripts.Models.Cards
 {
     /// <summary>
     /// Représente une carte de type Ruse
     /// </summary>
     [CreateAssetMenu(fileName = "New Ruse Card", menuName = "Scriptable Objects/Cards/Ruse Card")]
-    public class RuseCardSO : ScriptableObject
+    public class RuseCardSO : CardBaseSO
     {
         /// <summary>
         /// Les statistiques de la carte
         /// </summary>
         [field: SerializeField]
         public CardStats Stats { get; private set; }
-
-        /// <summary>
-        /// TRUE si la carte possède des stats
-        /// </summary>
-        public bool HasStats => Stats.Speed == 0 && Stats.Style == 0 && Stats.Technique == 0;
     }
 }

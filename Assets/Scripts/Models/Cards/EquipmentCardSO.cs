@@ -1,12 +1,13 @@
+using Assets.Scripts.Models.ValueTypes;
 using UnityEngine;
 
-namespace Assets.Scripts.Models.Cards.SOs
+namespace Assets.Scripts.Models.Cards
 {
     /// <summary>
     /// Représente une carte de type Equipement
     /// </summary>
     [CreateAssetMenu(fileName = "New Equipement Card", menuName = "Scriptable Objects/Cards/Equipement Card")]
-    public class EquipmentCardSO : ScriptableObject
+    public class EquipmentCardSO : CardBaseSO
     {
         /// <summary>
         /// Le type d'équipement de la carte
