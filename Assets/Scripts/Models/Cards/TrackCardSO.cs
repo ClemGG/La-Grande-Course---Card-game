@@ -4,10 +4,10 @@ using UnityEngine;
 namespace Assets.Scripts.Models.Cards
 {
     /// <summary>
-    /// Représente une carte de type Terrain
+    /// Représente une carte de type Circuit
     /// </summary>
     [CreateAssetMenu(fileName = "New Terrain Card", menuName = "Scriptable Objects/Cards/Terrain Card")]
-    public class TerrainCardSO : CardBaseSO
+    public sealed class TrackCardSO : CardBaseSO
     {
         /// <summary>
         /// Les statistiques de la carte

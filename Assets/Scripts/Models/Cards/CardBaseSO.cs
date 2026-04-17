@@ -1,5 +1,4 @@
 using Assets.Scripts.Models.ValueTypes;
-using Unity.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Models.Cards
@@ -13,25 +12,25 @@ namespace Assets.Scripts.Models.Cards
         /// Le nom de la carte
         /// </summary>
         [field: SerializeField]
-        public FixedString128Bytes Name { get; private set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// La description de l'effet de la carte
         /// </summary>
         [field: SerializeField, TextArea(3, 5)]
-        public FixedString4096Bytes EffectDescription { get; private set; }
+        public string EffectDescription { get; private set; }
 
         /// <summary>
         /// La description du lore de la carte
         /// </summary>
-        [field: SerializeField, TextArea(3, 5)]
-        public FixedString4096Bytes FlavourDescription { get; private set; }
+        [field: SerializeField, TextArea(3, 3)]
+        public string FlavourDescription { get; private set; }
 
         /// <summary>
         /// L'illustration de la carte
         /// </summary>
         [field: SerializeField]
-        public Texture2D Illustration { get; private set; }
+        public Sprite Illustration { get; private set; }
 
         /// <summary>
         /// Indique la ou les factions de la carte

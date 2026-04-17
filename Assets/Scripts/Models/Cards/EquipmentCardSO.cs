@@ -7,7 +7,7 @@ namespace Assets.Scripts.Models.Cards
     /// Représente une carte de type Equipement
     /// </summary>
     [CreateAssetMenu(fileName = "New Equipement Card", menuName = "Scriptable Objects/Cards/Equipement Card")]
-    public class EquipmentCardSO : CardBaseSO
+    public sealed class EquipmentCardSO : CardBaseSO
     {
         /// <summary>
         /// Le type d'équipement de la carte
