@@ -1,4 +1,5 @@
 using Assets.Scripts.Models.ValueTypes;
+using Unity.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Models.Cards
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Models.Cards
         /// Le nom de la carte
         /// </summary>
         [field: SerializeField]
-        public string Name { get; private set; }
+        public FixedString128Bytes Name { get; private set; }
 
         /// <summary>
         /// La description de l'effet de la carte

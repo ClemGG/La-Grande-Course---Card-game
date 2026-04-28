@@ -1,5 +1,6 @@
 using Assets.Scripts.Models.Cards;
 using Assets.Scripts.Models.ValueTypes;
+using Unity.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Models.Decks
@@ -7,14 +8,13 @@ namespace Assets.Scripts.Models.Decks
     /// <summary>
     /// Liste de cartes composant un deck
     /// </summary>
-    [CreateAssetMenu(fileName = "New Deck List", menuName = "Scriptable Objects/La Grande Course/Deck List")]
-    public class DeckList : ScriptableObject
+    public sealed class DeckList
     {
         /// <summary>
         /// Le nom du deck
         /// </summary>
         [field: SerializeField]
-        public string Name { get; private set; }
+        public FixedString128Bytes Name { get; private set; }
 
         /// <summary>
         /// Liste de cartes
