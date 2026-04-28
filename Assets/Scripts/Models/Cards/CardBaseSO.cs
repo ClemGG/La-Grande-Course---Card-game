@@ -27,12 +27,6 @@ namespace Assets.Scripts.Models.Cards
         public string FlavourDescription { get; private set; }
 
         /// <summary>
-        /// L'illustration de la carte
-        /// </summary>
-        [field: SerializeField]
-        public Sprite Illustration { get; private set; }
-
-        /// <summary>
         /// Indique la ou les factions de la carte
         /// </summary>
         [field: SerializeField]

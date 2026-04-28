@@ -6,7 +6,7 @@ namespace Assets.Scripts.Models.Cards
     /// <summary>
     /// Représente une carte de type Ruse
     /// </summary>
-    [CreateAssetMenu(fileName = "New Ruse Card", menuName = "Scriptable Objects/Cards/Ruse Card")]
+    [CreateAssetMenu(fileName = "New Ruse Card", menuName = "Scriptable Objects/La Grande Course/Cards/Ruse Card")]
     public sealed class RuseCardSO : CardBaseSO
     {
         /// <summary>

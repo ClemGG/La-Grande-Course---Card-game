@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2ce55c852d2004fa21d0a4268fd30d, type: 3}
+  m_Name: Card Illustrations Library
+  m_EditorClassIdentifier: Assets.Scripts.Models::Assets.Scripts.Models.Cards.CardIllustrationsLibrary
+  <Illustrations>k__BackingField:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: ee697bfc3ce46b34988b102d32688f20, type: 2}
+      Value:
+      - {fileID: 21300000, guid: 7a68a37a2e1c9f941b4a883c4a828ccb, type: 3}
+      - {fileID: 21300000, guid: e71bc93ab1982f7448c35aceb562a06e, type: 3}

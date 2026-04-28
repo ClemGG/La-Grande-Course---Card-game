@@ -25,4 +25,32 @@ namespace Assets.Scripts.Models.ValueTypes
         Outfit,
         Module
     }
+
+    /// <summary>
+    /// La rareté d'une carte. 
+    /// Vu qu'on utilise pas de boosters avec une répartition aléatoire des cartes,
+    /// ça offre juste des variantes visuelles d'une carte.
+    /// </summary>
+    public enum CardRarity
+    {
+        Common,
+        Uncommon,
+        Rare,
+        Legendary,
+
+        /// <summary>
+        /// La plus haute rareté pour les cartes distribuée normalement
+        /// </summary>
+        Mythic,
+
+        /// <summary>
+        /// Distribué uniquement lors d'événements
+        /// </summary>
+        Promo,
+
+        /// <summary>
+        /// Il n'en existe qu'une seule copie, distribuée pendant les tournois
+        /// </summary>
+        Unique
+    }
 }

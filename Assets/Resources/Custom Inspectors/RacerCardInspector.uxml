@@ -1,5 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
-    <ui:VisualElement name="root" style="flex-grow: 1;">
-        <ui:Image source="" name="CardPreview" data-source-path="_Image_k__BackingField" scale-mode="StretchToFill" style="left: auto; bottom: auto; right: auto; align-self: center; justify-content: flex-start; width: 336px; height: 240px;"/>
-    </ui:VisualElement>
-</ui:UXML>

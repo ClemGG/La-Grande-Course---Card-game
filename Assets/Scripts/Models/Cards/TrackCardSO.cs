@@ -6,7 +6,7 @@ namespace Assets.Scripts.Models.Cards
     /// <summary>
     /// Représente une carte de type Circuit
     /// </summary>
-    [CreateAssetMenu(fileName = "New Terrain Card", menuName = "Scriptable Objects/Cards/Terrain Card")]
+    [CreateAssetMenu(fileName = "New Terrain Card", menuName = "Scriptable Objects/La Grande Course/Cards/Terrain Card")]
     public sealed class TrackCardSO : CardBaseSO
     {
         /// <summary>

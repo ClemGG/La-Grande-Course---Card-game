@@ -6,7 +6,7 @@ namespace Assets.Scripts.Models.Cards
     /// <summary>
     /// Représente une carte de type Coureur
     /// </summary>
-    [CreateAssetMenu(fileName = "New Racer Card", menuName = "Scriptable Objects/Cards/Racer Card")]
+    [CreateAssetMenu(fileName = "New Racer Card", menuName = "Scriptable Objects/La Grande Course/Cards/Racer Card")]
     public sealed class RacerCardSO : CardBaseSO
     {
         /// <summary>
