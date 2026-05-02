@@ -12,6 +12,7 @@ namespace Assets.Scripts.Models.Cards
         /// <summary>
         /// Les illustrations alternatives pour chaque carte
         /// </summary>
+        [Tooltip("Les illustrations alternatives pour chaque carte")]
         [field: SerializeField]
         [field: SerializedDictionary("Card", "Alt Arts")]
         public SerializedDictionary<CardBaseSO, Sprite[]> Illustrations { get; private set; }

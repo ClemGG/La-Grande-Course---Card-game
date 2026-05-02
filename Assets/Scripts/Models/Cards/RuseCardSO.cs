@@ -12,6 +12,7 @@ namespace Assets.Scripts.Models.Cards
         /// <summary>
         /// Les statistiques de la carte
         /// </summary>
+        [Tooltip("Les statistiques de la carte")]
         [field: SerializeField]
         public CardStats Stats { get; private set; }
     }
