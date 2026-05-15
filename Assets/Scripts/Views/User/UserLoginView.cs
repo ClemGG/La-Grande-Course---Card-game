@@ -1,7 +1,9 @@
 using System;
+using Assets.Scripts.Models.Scenes;
 using Assets.Scripts.ViewModels.User;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Views.User
@@ -14,22 +16,58 @@ namespace Assets.Scripts.Views.User
         #region Variables Unity
 
         /// <summary>
+        /// Canvas d'enregistrement
+        /// </summary>
+        [SerializeField]
+        private Canvas _registerCanvas;
+
+        /// <summary>
+        /// Canvas de connexion
+        /// </summary>
+        [SerializeField]
+        private Canvas _loginCanvas;
+
+        /// <summary>
+        /// Canvas d'attente
+        /// </summary>
+        [SerializeField]
+        private Canvas _progressCanvas;
+
+        /// <summary>
         /// Label du message d'erreur
         /// </summary>
         [SerializeField]
-        private TextMeshProUGUI _errorMsg;
+        private TextMeshProUGUI _registerErrorMsg;
 
         /// <summary>
         /// Champ du nom d'utilisateur
         /// </summary>
         [SerializeField]
-        private TMP_InputField _usernameField;
+        private TMP_InputField _registerUsernameField;
 
         /// <summary>
         /// Champ du mdp
         /// </summary>
         [SerializeField]
-        private TMP_InputField _passwordField;
+        private TMP_InputField _registerPasswordField;
+
+        /// <summary>
+        /// Label du message d'erreur
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI _loginErrorMsg;
+
+        /// <summary>
+        /// Champ du nom d'utilisateur
+        /// </summary>
+        [SerializeField]
+        private TMP_InputField _loginUsernameField;
+
+        /// <summary>
+        /// Champ du mdp
+        /// </summary>
+        [SerializeField]
+        private TMP_InputField _loginPasswordField;
 
         /// <summary>
         /// Champ du admin
@@ -38,10 +76,10 @@ namespace Assets.Scripts.Views.User
         private Toggle _adminField;
 
         /// <summary>
-        /// Canvas d'attente
+        /// Scène du menu ppal
         /// </summary>
         [SerializeField]
-        private Canvas _progressCanvas;
+        private SceneReference _mainMenuScene;
 
         #endregion
 
@@ -77,8 +115,6 @@ namespace Assets.Scripts.Views.User
         private void Awake()
         {
             _vm = GetComponent<UserLoginViewModel>();
-            _errorMsg.gameObject.SetActive(false);
-            _progressCanvas.enabled = false;
         }
 
         /// <summary>
@@ -86,12 +122,19 @@ namespace Assets.Scripts.Views.User
         /// </summary>
         private void Start()
         {
+            bool loginCacheExists = _vm.TryGetCredentials(out string username, out string password, out bool admin);
+            _registerErrorMsg.gameObject.SetActive(false);
+            _loginErrorMsg.gameObject.SetActive(false);
+            _progressCanvas.enabled = false;
+            _registerCanvas.enabled = !loginCacheExists;
+            _loginCanvas.enabled = loginCacheExists;
+
             // Si l'utilisateur a déjà inscrit ses identifiants auparavant, on les récupère dans le cache
 
-            if (_vm.TryGetCredentials(out string username, out string password, out bool admin))
+            if (loginCacheExists)
             {
-                _usernameField.SetTextWithoutNotify(username);
-                _passwordField.SetTextWithoutNotify(password);
+                _loginUsernameField.SetTextWithoutNotify(username);
+                _loginPasswordField.SetTextWithoutNotify(password);
                 _adminField.SetIsOnWithoutNotify(admin);
             }
         }
@@ -109,9 +152,9 @@ namespace Assets.Scripts.Views.User
             {
                 print("Registering...");
                 _progressCanvas.enabled = true;
-                _errorMsg.gameObject.SetActive(false);
-                string username = _usernameField.text;
-                string password = _passwordField.text;
+                _registerErrorMsg.gameObject.SetActive(false);
+                string username = _registerUsernameField.text;
+                string password = _registerPasswordField.text;
                 bool admin = _adminField.isOn;
 
                 if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
@@ -136,17 +179,16 @@ namespace Assets.Scripts.Views.User
             {
                 print("Logging...");
                 _progressCanvas.enabled = true;
-                _errorMsg.gameObject.SetActive(false);
-                string username = _usernameField.text;
-                string password = _passwordField.text;
-                bool admin = _adminField.isOn;
+                _registerErrorMsg.gameObject.SetActive(false);
+                string username = _loginUsernameField.text;
+                string password = _loginPasswordField.text;
 
                 if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 {
                     throw new Exception(Constants.EMPTY_INPUT_ERR);
                 }
 
-                _vm.Login(username, password, admin, OnLoginSuccess, OnExceptionThrown);
+                _vm.Login(username, password, OnLoginSuccess, OnExceptionThrown);
             }
             catch (Exception e)
             {
@@ -163,26 +205,32 @@ namespace Assets.Scripts.Views.User
         /// </summary>
         private void OnRegisterSuccess()
         {
-            string username = _usernameField.text;
-            string password = _passwordField.text;
+            string username = _registerUsernameField.text;
+            string password = _registerPasswordField.text;
             bool admin = _adminField.isOn;
-            _vm.SetCredentialsCache(username, password, admin);
 
-            _progressCanvas.enabled = false;
+            _vm.SetCredentialsCache(username, password, admin);
+            _vm.SetSessionUser(username, password, admin);
+
+            SceneManager.LoadSceneAsync(_mainMenuScene);
+
             print("Registering successful");
         }
 
         /// <summary>
         /// Apelée si la connexion est un succès
         /// </summary>
-        private void OnLoginSuccess()
+        /// <param name="admin">true si l'utilisateur est un admin</param>
+        private void OnLoginSuccess(bool admin)
         {
-            string username = _usernameField.text;
-            string password = _passwordField.text;
-            bool admin = _adminField.isOn;
-            _vm.SetCredentialsCache(username, password, admin);
+            string username = _registerUsernameField.text;
+            string password = _registerPasswordField.text;
 
-            _progressCanvas.enabled = false;
+            _vm.SetCredentialsCache(username, password, admin);
+            _vm.SetSessionUser(username, password, admin);
+
+            SceneManager.LoadSceneAsync(_mainMenuScene);
+
             print("Logging successful");
         }
 
@@ -192,8 +240,10 @@ namespace Assets.Scripts.Views.User
         private void OnExceptionThrown(Exception e)
         {
             _progressCanvas.enabled = false;
-            _errorMsg.gameObject.SetActive(true);
-            _errorMsg.SetText(e.Message);
+            _registerErrorMsg.gameObject.SetActive(true);
+            _loginErrorMsg.gameObject.SetActive(true);
+            _registerErrorMsg.SetText(e.Message);
+            _loginErrorMsg.SetText(e.Message);
             Debug.LogException(e);
         }
 

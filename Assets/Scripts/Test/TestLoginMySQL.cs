@@ -41,12 +41,13 @@ public class TestLoginMySQL : MonoBehaviour
         form.AddField("username", _usernameFieldRegister.text);
         form.AddField("password", _passwordFieldRegister.text);
 
-        using UnityWebRequest www = UnityWebRequest.Post("http://localhost/test/registerTest.php", form);
+        using UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/registerTest.php", form);
         yield return www.SendWebRequest();
 
         if (www.downloadHandler.text != "0")
         {
             Debug.LogError(www.downloadHandler.text);
+            Debug.LogError(www.error);
         }
         else
         {
@@ -70,7 +71,7 @@ public class TestLoginMySQL : MonoBehaviour
         form.AddField("username", _usernameFieldLogin.text);
         form.AddField("password", _passwordFieldLogin.text);
 
-        using UnityWebRequest www = UnityWebRequest.Post("http://localhost/test/loginTest.php", form);
+        using UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/loginTest.php", form);
         yield return www.SendWebRequest();
 
         if (www.downloadHandler.text[0] != '0')
@@ -99,7 +100,7 @@ public class TestLoginMySQL : MonoBehaviour
         form.AddField("username", _username);
         form.AddField("score", _score);
 
-        using UnityWebRequest www = UnityWebRequest.Post("http://localhost/test/saveDataTest.php", form);
+        using UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/saveDataTest.php", form);
         yield return www.SendWebRequest();
 
         if (www.downloadHandler.text != "0")

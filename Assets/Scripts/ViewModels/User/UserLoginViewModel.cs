@@ -84,9 +84,22 @@ namespace Assets.Scripts.ViewModels.User
         /// <param name="password">Mot de passe</param>
         /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
         /// <param name="onError">Appelée quand une exception est levée</param>
-        public void Login(string username, string password, bool admin, Action onComplete, Action<Exception> onError)
+        public void Login(string username, string password, Action<bool> onComplete, Action<Exception> onError)
         {
 
+        }
+
+        /// <summary>
+        /// Assigne les données de l'utilisateur pour la session active
+        /// </summary>
+        /// <param name="username">Nom d'utilisateur</param>
+        /// <param name="password">Mot de passe</param>
+        /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
+        public void SetSessionUser(string username, string password, bool admin)
+        {
+            Session.UserName = username;
+            Session.Password = password;
+            Session.Admin = admin;
         }
 
         #endregion

@@ -21,11 +21,6 @@ namespace Assets.Scripts.ViewModels.Database
         internal static async Awaitable RegisterAsync(string username, string password, bool admin, Action onComplete)
         {
             WWWForm form = new();
-            form.AddField("serverName", Constants.SERVER_NAME);
-            form.AddField("serverLogin", Constants.SERVER_LOGIN);
-            form.AddField("serverPwd", Constants.SERVER_PASSWORD);
-            form.AddField("databaseName", Constants.DATABASE_NAME);
-            form.AddField("tableName", Constants.USERS_TABLE);
             form.AddField("username", username);
             form.AddField("password", password);
             form.AddField("admin", admin ? 1 : 0);
@@ -33,16 +28,26 @@ namespace Assets.Scripts.ViewModels.Database
             using UnityWebRequest request = UnityWebRequest.Post(Constants.REGISTER_URI, form);
             await Awaitable.FromAsyncOperation(request.SendWebRequest(), Application.exitCancellationToken);
 
-            if (request.result == UnityWebRequest.Result.ConnectionError)
-                UnityEngine.Debug.Log("Connection Error: " + request.error);
-            if (request.result == UnityWebRequest.Result.ProtocolError)
-                UnityEngine.Debug.Log("Protocol Error: " + request.error);
-            if (request.result == UnityWebRequest.Result.DataProcessingError)
-                UnityEngine.Debug.Log("data Error: " + request.error);
+            //switch (request.result)
+            //{
+            //    case UnityWebRequest.Result.ConnectionError:
+            //        UnityEngine.Debug.Log("Connection Error: " + request.error);
+            //        break;
+            //    case UnityWebRequest.Result.ProtocolError:
+            //        UnityEngine.Debug.Log("Protocol Error: " + request.error);
+            //        break;
+            //    case UnityWebRequest.Result.DataProcessingError:
+            //        UnityEngine.Debug.Log("Data Processing Error: " + request.error);
+            //        break;
+            //}
 
             if (request.result != UnityWebRequest.Result.Success)
             {
                 throw new Exception(request.error);
+            }
+            else if (!string.IsNullOrEmpty(request.downloadHandler.text))
+            {
+                throw new Exception(request.downloadHandler.text);
             }
             else
             {
