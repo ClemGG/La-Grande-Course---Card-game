@@ -221,16 +221,19 @@ namespace Assets.Scripts.Views.User
         /// Apelée si la connexion est un succès
         /// </summary>
         /// <param name="admin">true si l'utilisateur est un admin</param>
-        private void OnLoginSuccess(bool admin)
+        private void OnLoginSuccess(string loginInfo)
         {
-            string username = _registerUsernameField.text;
-            string password = _registerPasswordField.text;
+            string username = _loginUsernameField.text;
+            string password = _loginPasswordField.text;
+            string[] loginInfos = loginInfo.Split('\n');
+            bool admin = int.Parse(loginInfos[1]) == 1;
 
             _vm.SetCredentialsCache(username, password, admin);
             _vm.SetSessionUser(username, password, admin);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);
 
+            print(admin);
             print("Logging successful");
         }
 

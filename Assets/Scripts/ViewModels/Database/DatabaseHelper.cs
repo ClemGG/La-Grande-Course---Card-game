@@ -55,6 +55,47 @@ namespace Assets.Scripts.ViewModels.Database
             }
         }
 
+        /// <summary>
+        /// Connecte l'utilisateur
+        /// </summary>
+        /// <param name="username">Nom d'utilisateur</param>
+        /// <param name="password">Mot de passe</param>
+        /// <param name="onComplete">Appelée une fois l'opération terminée</param>
+        internal static async Awaitable LoginAsync(string username, string password, Action<string> onComplete)
+        {
+            WWWForm form = new();
+            form.AddField("username", username);
+            form.AddField("password", password);
+
+            using UnityWebRequest request = UnityWebRequest.Post(Constants.LOGIN_URI, form);
+            await Awaitable.FromAsyncOperation(request.SendWebRequest(), Application.exitCancellationToken);
+
+            //switch (request.result)
+            //{
+            //    case UnityWebRequest.Result.ConnectionError:
+            //        UnityEngine.Debug.Log("Connection Error: " + request.error);
+            //        break;
+            //    case UnityWebRequest.Result.ProtocolError:
+            //        UnityEngine.Debug.Log("Protocol Error: " + request.error);
+            //        break;
+            //    case UnityWebRequest.Result.DataProcessingError:
+            //        UnityEngine.Debug.Log("Data Processing Error: " + request.error);
+            //        break;
+            //}
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                throw new Exception(request.error);
+            }
+            else if (!string.IsNullOrEmpty(request.downloadHandler.text) && request.downloadHandler.text[0] != '0')
+            {
+                throw new Exception(request.downloadHandler.text);
+            }
+            else
+            {
+                onComplete?.Invoke(request.downloadHandler.text);
+            }
+        }
 
         #endregion
     }

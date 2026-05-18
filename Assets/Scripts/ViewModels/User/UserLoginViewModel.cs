@@ -82,11 +82,11 @@ namespace Assets.Scripts.ViewModels.User
         /// </summary>
         /// <param name="username">Nom d'utilisateur</param>
         /// <param name="password">Mot de passe</param>
-        /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
+        /// <param name="onComplete">Appelée une fois l'opération terminée</param>
         /// <param name="onError">Appelée quand une exception est levée</param>
-        public void Login(string username, string password, Action<bool> onComplete, Action<Exception> onError)
+        public void Login(string username, string password, Action<string> onComplete, Action<Exception> onError)
         {
-
+            DatabaseHelper.LoginAsync(username, password, onComplete).WaitForResult(onError);
         }
 
         /// <summary>
