@@ -97,6 +97,44 @@ namespace Assets.Scripts.ViewModels.Database
             }
         }
 
+        /// <summary>
+        /// Déconnecte l'utilisateur
+        /// </summary>
+        /// <param name="onComplete">Appelée une fois l'opération terminée</param>
+        internal static async Awaitable LogoutAsync(Action onComplete)
+        {
+            WWWForm form = new();
+
+            using UnityWebRequest request = UnityWebRequest.Post(Constants.LOGOUT_URI, form);
+            await Awaitable.FromAsyncOperation(request.SendWebRequest(), Application.exitCancellationToken);
+
+            //switch (request.result)
+            //{
+            //    case UnityWebRequest.Result.ConnectionError:
+            //        UnityEngine.Debug.Log("Connection Error: " + request.error);
+            //        break;
+            //    case UnityWebRequest.Result.ProtocolError:
+            //        UnityEngine.Debug.Log("Protocol Error: " + request.error);
+            //        break;
+            //    case UnityWebRequest.Result.DataProcessingError:
+            //        UnityEngine.Debug.Log("Data Processing Error: " + request.error);
+            //        break;
+            //}
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                throw new Exception(request.error);
+            }
+            else if (!string.IsNullOrEmpty(request.downloadHandler.text))
+            {
+                throw new Exception(request.downloadHandler.text);
+            }
+            else
+            {
+                onComplete?.Invoke();
+            }
+        }
+
         #endregion
     }
 }

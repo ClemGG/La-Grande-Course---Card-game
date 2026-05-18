@@ -15,6 +15,11 @@ namespace Assets.Scripts.Models.Player
         public static FixedString128Bytes UserName { get; set; }
 
         /// <summary>
+        /// Le deck actif du joueur
+        /// </summary>
+        public static DeckRecipe ActiveDeck { get; set; }
+
+        /// <summary>
         /// Les decks du joueur
         /// </summary>
         public static DeckRecipe[] DeckRecipes { get; set; }
