@@ -220,7 +220,7 @@ namespace Assets.Scripts.Views.User
         /// <summary>
         /// Apelée si la connexion est un succès
         /// </summary>
-        /// <param name="admin">true si l'utilisateur est un admin</param>
+        /// <param name="loginInfo">Infos de connexion</param>
         private void OnLoginSuccess(string loginInfo)
         {
             string username = _loginUsernameField.text;
