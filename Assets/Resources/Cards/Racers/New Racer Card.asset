@@ -12,12 +12,148 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7a729932950ff4e9e1e1faf041356d, type: 3}
   m_Name: New Racer Card
   m_EditorClassIdentifier: Assets.Scripts.Models::Assets.Scripts.Models.Cards.RacerCardSO
-  <Name>k__BackingField: 
+  <Name>k__BackingField:
+    utf8LengthInBytes: 0
+    bytes:
+      offset0000:
+        byte0000: 0
+        byte0001: 0
+        byte0002: 0
+        byte0003: 0
+        byte0004: 0
+        byte0005: 0
+        byte0006: 0
+        byte0007: 0
+        byte0008: 0
+        byte0009: 0
+        byte0010: 0
+        byte0011: 0
+        byte0012: 0
+        byte0013: 0
+        byte0014: 0
+        byte0015: 0
+      offset0016:
+        byte0000: 0
+        byte0001: 0
+        byte0002: 0
+        byte0003: 0
+        byte0004: 0
+        byte0005: 0
+        byte0006: 0
+        byte0007: 0
+        byte0008: 0
+        byte0009: 0
+        byte0010: 0
+        byte0011: 0
+        byte0012: 0
+        byte0013: 0
+        byte0014: 0
+        byte0015: 0
+      offset0032:
+        byte0000: 0
+        byte0001: 0
+        byte0002: 0
+        byte0003: 0
+        byte0004: 0
+        byte0005: 0
+        byte0006: 0
+        byte0007: 0
+        byte0008: 0
+        byte0009: 0
+        byte0010: 0
+        byte0011: 0
+        byte0012: 0
+        byte0013: 0
+        byte0014: 0
+        byte0015: 0
+      offset0048:
+        byte0000: 0
+        byte0001: 0
+        byte0002: 0
+        byte0003: 0
+        byte0004: 0
+        byte0005: 0
+        byte0006: 0
+        byte0007: 0
+        byte0008: 0
+        byte0009: 0
+        byte0010: 0
+        byte0011: 0
+        byte0012: 0
+        byte0013: 0
+        byte0014: 0
+        byte0015: 0
+      offset0064:
+        byte0000: 0
+        byte0001: 0
+        byte0002: 0
+        byte0003: 0
+        byte0004: 0
+        byte0005: 0
+        byte0006: 0
+        byte0007: 0
+        byte0008: 0
+        byte0009: 0
+        byte0010: 0
+        byte0011: 0
+        byte0012: 0
+        byte0013: 0
+        byte0014: 0
+        byte0015: 0
+      offset0080:
+        byte0000: 0
+        byte0001: 0
+        byte0002: 0
+        byte0003: 0
+        byte0004: 0
+        byte0005: 0
+        byte0006: 0
+        byte0007: 0
+        byte0008: 0
+        byte0009: 0
+        byte0010: 0
+        byte0011: 0
+        byte0012: 0
+        byte0013: 0
+        byte0014: 0
+        byte0015: 0
+      offset0096:
+        byte0000: 0
+        byte0001: 0
+        byte0002: 0
+        byte0003: 0
+        byte0004: 0
+        byte0005: 0
+        byte0006: 0
+        byte0007: 0
+        byte0008: 0
+        byte0009: 0
+        byte0010: 0
+        byte0011: 0
+        byte0012: 0
+        byte0013: 0
+        byte0014: 0
+        byte0015: 0
+      byte0112: 0
+      byte0113: 0
+      byte0114: 0
+      byte0115: 0
+      byte0116: 0
+      byte0117: 0
+      byte0118: 0
+      byte0119: 0
+      byte0120: 0
+      byte0121: 0
+      byte0122: 0
+      byte0123: 0
+      byte0124: 0
+      byte0125: 0
+  <Illustrations>k__BackingField:
+  - {fileID: 21300000, guid: 7a68a37a2e1c9f941b4a883c4a828ccb, type: 3}
+  - {fileID: 21300000, guid: e71bc93ab1982f7448c35aceb562a06e, type: 3}
   <EffectDescription>k__BackingField: 
   <FlavourDescription>k__BackingField: 
-  <Illustration>k__BackingField: {fileID: 21300000, guid: 7a68a37a2e1c9f941b4a883c4a828ccb, type: 3}
   <Purity>k__BackingField: 0
-  <EffectID>k__BackingField: 0
   <Stats>k__BackingField:
     <Speed>k__BackingField: 0
     <Style>k__BackingField: 0

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Test/TestLoginMySQL.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/Load Assets Scene.unity
+    guid: 4fa8dc9ae55d6474eae37964d7832756
+  - enabled: 1
     path: Assets/Scenes/Login Scene.unity
     guid: ebffd3437688cda4cbafb3d0df890cb4
   - enabled: 1
@@ -18,4 +21,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Play Scene.unity
     guid: 89f8f250ba345bc4f85ea52e900d83f9
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 19d82d99911304a4cbbce64becb64c23, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

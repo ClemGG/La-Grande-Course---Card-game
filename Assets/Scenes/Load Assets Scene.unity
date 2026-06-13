@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 371806856}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1185.8174, y: 518.0537, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -176,7 +176,7 @@ Transform:
   m_GameObject: {fileID: 453301151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1185.8174, y: 518.0537, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -440,7 +440,7 @@ Transform:
   m_GameObject: {fileID: 1295673692}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1185.8174, y: -518.0537, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -501,6 +501,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1905986251}
+  - component: {fileID: 1905986253}
+  - component: {fileID: 1905986252}
   m_Layer: 0
   m_Name: Load Database Manager
   m_TagString: Untagged
@@ -523,6 +525,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 371806857}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1905986252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905986250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87044cf799661ce4f8f37b5e26bacefc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assets.Scripts.ViewModels::LoadAssetsViewModel
+--- !u!114 &1905986253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905986250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0530895a3f521e040b58312a6a4ed93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assets.Scripts.Views::Assets.Scripts.Views.Database.LoadAssetsView
+  _loginScene:
+    sceneAsset: {fileID: 102900000, guid: ebffd3437688cda4cbafb3d0df890cb4, type: 3}
+    scenePath: Assets/Scenes/Login Scene.unity
 --- !u!1 &2129663506
 GameObject:
   m_ObjectHideFlags: 0

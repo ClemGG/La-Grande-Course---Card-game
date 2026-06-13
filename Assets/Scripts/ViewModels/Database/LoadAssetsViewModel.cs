@@ -1,0 +1,23 @@
+using System;
+using Assets.Scripts.ViewModels.Database;
+using UnityEngine;
+
+/// <summary>
+/// Contrôleur du LoadAssetsView
+/// </summary>
+public class LoadAssetsViewModel : MonoBehaviour
+{
+    #region Méthodes publiques
+
+    /// <summary>
+    /// Charge les assets du jeu en asynchrone
+    /// </summary>
+    /// <param name="onComplete">Appelée une fois les assets chargées</param>
+    public void LoadAssetsAsync(Action onComplete)
+    {
+        DatabaseHelper.LoadCardsAsync();
+        onComplete?.Invoke();
+    }
+
+    #endregion
+}

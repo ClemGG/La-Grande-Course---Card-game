@@ -1,4 +1,6 @@
 using System;
+using Assets.Scripts.Models.Cards;
+using Assets.Scripts.Models.Database;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -133,6 +135,18 @@ namespace Assets.Scripts.ViewModels.Database
             {
                 onComplete?.Invoke();
             }
+        }
+
+        /// <summary>
+        /// Charge les cartes depuis le dossier Resources
+        /// </summary>
+        internal static async Awaitable LoadCardsAsync()
+        {
+            GameAssets.RacerCards = Resources.LoadAll<RacerCardSO>("Cards/Racers");
+            GameAssets.TrackCards = Resources.LoadAll<TrackCardSO>("Cards/Tracks");
+            GameAssets.SkillCards = Resources.LoadAll<SkillCardSO>("Cards/Skills");
+            GameAssets.EquipmentCards = Resources.LoadAll<EquipmentCardSO>("Cards/Equipments");
+            GameAssets.RuseCards = Resources.LoadAll<RuseCardSO>("Cards/Ruses");
         }
 
         #endregion

@@ -6,8 +6,10 @@ namespace Assets.Scripts.Models.Database
     /// Contient l'ensemble des objets présents dans la BDD
     /// (cartes, etc.)
     /// </summary>
-    public static class Database
+    public static class GameAssets
     {
+        #region Propriétés
+
         /// <summary>
         /// Liste de toutes les cartes Coureur
         /// </summary>
@@ -32,5 +34,7 @@ namespace Assets.Scripts.Models.Database
         /// Liste de toutes les cartes Ruse
         /// </summary>
         public static RuseCardSO[] RuseCards { get; set; }
+
+        #endregion
     }
 }

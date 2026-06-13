@@ -10,7 +10,7 @@ namespace Assets.Scripts.Models.Player
         /// <summary>
         /// Liste de cartes
         /// </summary>
-        public static CardInstance[] Cards { get; }
+        public static CardInventoryInstance[] Cards { get; }
 
         /// <summary>
         /// Nombre de copies par carte, pour éviter d'avoir à dupliquer les données

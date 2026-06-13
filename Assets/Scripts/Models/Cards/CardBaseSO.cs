@@ -17,6 +17,13 @@ namespace Assets.Scripts.Models.Cards
         public FixedString128Bytes Name { get; private set; }
 
         /// <summary>
+        /// Les différentes illustrations associées à cette carte
+        /// </summary>
+        [Tooltip("Les différentes illustrations associées à cette carte")]
+        [field: SerializeField]
+        public Sprite[] Illustrations { get; private set; }
+
+        /// <summary>
         /// La description de l'effet de la carte
         /// </summary>
         [Tooltip("La description de l'effet de la carte")]

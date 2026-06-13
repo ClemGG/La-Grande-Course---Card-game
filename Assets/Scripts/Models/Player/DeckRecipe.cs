@@ -18,7 +18,7 @@ namespace Assets.Scripts.Models.Player
         /// <summary>
         /// Liste de cartes
         /// </summary>
-        public CardInstance[] Cards { get; }
+        public CardInventoryInstance[] Cards { get; }
 
         #endregion
 
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Models.Player
         /// </summary>
         /// <param name="name">Le nom du deck</param>
         /// <param name="cards">Liste de cartes</param>
-        public DeckRecipe(FixedString128Bytes name, CardInstance[] cards)
+        public DeckRecipe(FixedString128Bytes name, CardInventoryInstance[] cards)
         {
             Name = name;
             Cards = cards;

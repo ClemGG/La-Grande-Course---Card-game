@@ -5,7 +5,7 @@ namespace Assets.Scripts.Models.Cards
     /// <summary>
     /// Instance d'une carte dans l'inventaire du joueur
     /// </summary>
-    public readonly struct CardInstance
+    public readonly struct CardInventoryInstance
     {
         #region Propriétés
 
@@ -34,7 +34,7 @@ namespace Assets.Scripts.Models.Cards
         /// <param name="data">Données de la carte</param>=
         /// <param name="rarity">Rareté de la carte</param>
         /// <param name="illustrationID">L'illustration de la carte</param>
-        public CardInstance(CardBaseSO data, CardRarity rarity, uint illustrationID)
+        public CardInventoryInstance(CardBaseSO data, CardRarity rarity, uint illustrationID)
         {
             Data = data;
             Rarity = rarity;
