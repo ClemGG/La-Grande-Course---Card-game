@@ -3,119 +3,121 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class TestLoginMySQL : MonoBehaviour
+namespace Assets.Scripts.Test
 {
-    public GameObject _mainMenu, _loginMenu, _registerMenu, _gameMenu;
-    public TextMeshProUGUI _scoreLabel, _welcomeLabel;
-    public TMP_InputField _usernameFieldLogin, _passwordFieldLogin;
-    public TMP_InputField _usernameFieldRegister, _passwordFieldRegister;
-
-    private static string _username;
-    private static int _score;
-    private static bool LoggedIn => _username != null;
-
-    public void Register()
+    /// <summary>
+    /// Test login MySQL
+    /// </summary>
+    public class TestLoginMySQL : MonoBehaviour
     {
-        StartCoroutine(RegisterCo());
-    }
+        public GameObject _mainMenu, _loginMenu, _registerMenu, _gameMenu;
+        public TextMeshProUGUI _scoreLabel, _welcomeLabel;
+        public TMP_InputField _usernameFieldLogin, _passwordFieldLogin;
+        public TMP_InputField _usernameFieldRegister, _passwordFieldRegister;
 
-    public void Login()
-    {
-        StartCoroutine(LoginCo());
-    }
+        private static string _username;
+        private static int _score;
+        private static bool LoggedIn => _username != null;
 
-    public void Logout()
-    {
-        StartCoroutine(LogoutCo());
-    }
-
-    public void GainPoints()
-    {
-        ++_score;
-        _scoreLabel.text = $"Score: {_score}";
-    }
-
-    IEnumerator RegisterCo()
-    {
-        WWWForm form = new();
-        form.AddField("username", _usernameFieldRegister.text);
-        form.AddField("password", _passwordFieldRegister.text);
-
-        using UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/registerTest.php", form);
-        yield return www.SendWebRequest();
-
-        if (www.downloadHandler.text != "0")
+        public void Register()
         {
-            Debug.LogError(www.downloadHandler.text);
-            Debug.LogError(www.error);
+            StartCoroutine(RegisterCo());
         }
-        else
+
+        public void Login()
         {
-            // Show results as text
-            Debug.Log("User created succesfully");
-            Debug.Log(www.downloadHandler.text);
+            StartCoroutine(LoginCo());
+        }
 
-            _registerMenu.SetActive(false);
-            _gameMenu.SetActive(true);
+        public void Logout()
+        {
+            StartCoroutine(LogoutCo());
+        }
 
-            _username = _usernameFieldRegister.text;
-            _score = 0;
-            _welcomeLabel.text = $"Welcome, {_username}";
+        public void GainPoints()
+        {
+            ++_score;
             _scoreLabel.text = $"Score: {_score}";
         }
-    }
 
-    IEnumerator LoginCo()
-    {
-        WWWForm form = new();
-        form.AddField("username", _usernameFieldLogin.text);
-        form.AddField("password", _passwordFieldLogin.text);
-
-        using UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/loginTest.php", form);
-        yield return www.SendWebRequest();
-
-        if (www.downloadHandler.text[0] != '0')
+        IEnumerator RegisterCo()
         {
-            Debug.LogError(www.downloadHandler.text);
+            WWWForm form = new();
+            form.AddField("username", _usernameFieldRegister.text);
+            form.AddField("password", _passwordFieldRegister.text);
+
+            using UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/registerTest.php", form);
+            yield return www.SendWebRequest();
+
+            if (www.downloadHandler.text != "0")
+            {
+                Debug.LogError(www.downloadHandler.text);
+                Debug.LogError(www.error);
+            }
+            else
+            {
+                // Show results as text
+                Debug.Log("User created succesfully");
+                Debug.Log(www.downloadHandler.text);
+
+                _registerMenu.SetActive(false);
+                _gameMenu.SetActive(true);
+
+                _username = _usernameFieldRegister.text;
+                _score = 0;
+                _welcomeLabel.text = $"Welcome, {_username}";
+                _scoreLabel.text = $"Score: {_score}";
+            }
         }
-        else
+
+        IEnumerator LoginCo()
         {
-            // Show results as text
-            Debug.Log("User logged in succesfully");
-            Debug.Log(www.downloadHandler.text);
+            WWWForm form = new();
+            form.AddField("username", _usernameFieldLogin.text);
+            form.AddField("password", _passwordFieldLogin.text);
 
-            _loginMenu.SetActive(false);
-            _gameMenu.SetActive(true);
+            using UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/loginTest.php", form);
+            yield return www.SendWebRequest();
 
-            _username = _usernameFieldLogin.text;
-            _score = int.Parse(www.downloadHandler.text.Split('\n')[1]);
-            _welcomeLabel.text = $"Welcome, {_username}";
-            _scoreLabel.text = $"Score: {_score}";
+            if (www.downloadHandler.text[0] != '0')
+                Debug.LogError(www.downloadHandler.text);
+            else
+            {
+                // Show results as text
+                Debug.Log("User logged in succesfully");
+                Debug.Log(www.downloadHandler.text);
+
+                _loginMenu.SetActive(false);
+                _gameMenu.SetActive(true);
+
+                _username = _usernameFieldLogin.text;
+                _score = int.Parse(www.downloadHandler.text.Split('\n')[1]);
+                _welcomeLabel.text = $"Welcome, {_username}";
+                _scoreLabel.text = $"Score: {_score}";
+            }
         }
-    }
 
-    IEnumerator LogoutCo()
-    {
-        WWWForm form = new();
-        form.AddField("username", _username);
-        form.AddField("score", _score);
-
-        using UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/saveDataTest.php", form);
-        yield return www.SendWebRequest();
-
-        if (www.downloadHandler.text != "0")
+        IEnumerator LogoutCo()
         {
-            Debug.LogError(www.downloadHandler.text);
-        }
-        else
-        {
-            // Show results as text
-            Debug.Log("Game saved successfully");
-            Debug.Log(www.downloadHandler.text);
+            WWWForm form = new();
+            form.AddField("username", _username);
+            form.AddField("score", _score);
 
-            _username = null;
-            _gameMenu.SetActive(false);
-            _mainMenu.SetActive(true);
+            using UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/saveDataTest.php", form);
+            yield return www.SendWebRequest();
+
+            if (www.downloadHandler.text != "0")
+                Debug.LogError(www.downloadHandler.text);
+            else
+            {
+                // Show results as text
+                Debug.Log("Game saved successfully");
+                Debug.Log(www.downloadHandler.text);
+
+                _username = null;
+                _gameMenu.SetActive(false);
+                _mainMenu.SetActive(true);
+            }
         }
     }
 }

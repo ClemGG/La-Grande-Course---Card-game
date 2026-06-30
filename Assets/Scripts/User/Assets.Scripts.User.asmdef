@@ -1,0 +1,27 @@
+{
+    "name": "Assets.Scripts.User",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:e0cd26848372d4e5c891c569017e11f1",
+        "GUID:2e40640ed7c31e6458226ca328d4f94d",
+        "GUID:3d59c1a043d71ad44bd2c09575813f81",
+        "GUID:ac53c450ecff1e4439faeba3a8f8982e",
+        "GUID:45bc9266abbb5ca46a524e7be01077a8"
+    ],
+    "includePlatforms": [
+        "Editor",
+        "WebGL",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

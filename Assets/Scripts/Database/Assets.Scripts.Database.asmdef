@@ -1,15 +1,15 @@
 {
-    "name": "Assets.Editor",
+    "name": "Assets.Scripts.Database",
     "rootNamespace": "",
     "references": [
-        "GUID:45bc9266abbb5ca46a524e7be01077a8",
-        "GUID:6f8fc53e36c14804f93c588802821f02",
-        "GUID:e0cd26848372d4e5c891c569017e11f1",
-        "GUID:d8b63aba1907145bea998dd612889d6b",
-        "GUID:24ba549491426d1429f1780bebcdf286"
+        "GUID:2e40640ed7c31e6458226ca328d4f94d",
+        "GUID:3d59c1a043d71ad44bd2c09575813f81"
     ],
     "includePlatforms": [
-        "Editor"
+        "Editor",
+        "WebGL",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

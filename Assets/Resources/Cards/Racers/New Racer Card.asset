@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: New Racer Card
   m_EditorClassIdentifier: Assets.Scripts.Models::Assets.Scripts.Models.Cards.RacerCardSO
   <Name>k__BackingField:
-    utf8LengthInBytes: 0
+    utf8LengthInBytes: 14
     bytes:
       offset0000:
-        byte0000: 0
-        byte0001: 0
-        byte0002: 0
-        byte0003: 0
-        byte0004: 0
-        byte0005: 0
-        byte0006: 0
-        byte0007: 0
-        byte0008: 0
-        byte0009: 0
-        byte0010: 0
-        byte0011: 0
-        byte0012: 0
-        byte0013: 0
+        byte0000: 78
+        byte0001: 101
+        byte0002: 119
+        byte0003: 32
+        byte0004: 82
+        byte0005: 97
+        byte0006: 99
+        byte0007: 101
+        byte0008: 114
+        byte0009: 32
+        byte0010: 67
+        byte0011: 97
+        byte0012: 114
+        byte0013: 100
         byte0014: 0
         byte0015: 0
       offset0016:

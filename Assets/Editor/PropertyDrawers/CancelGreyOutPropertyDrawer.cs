@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Models.Attributes;
+﻿using Assets.Scripts.Attributes;
 using UnityEditor;
 using UnityEngine;
 
