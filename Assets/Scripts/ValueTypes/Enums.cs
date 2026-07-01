@@ -36,12 +36,11 @@ namespace Assets.Scripts.ValueTypes
         Common,
         Uncommon,
         Rare,
-        Legendary,
 
         /// <summary>
         /// La plus haute rareté pour les cartes distribuée normalement
         /// </summary>
-        Mythic,
+        Chromatic,
 
         /// <summary>
         /// Distribué uniquement lors d'événements
@@ -49,7 +48,7 @@ namespace Assets.Scripts.ValueTypes
         Promo,
 
         /// <summary>
-        /// Il n'en existe qu'une seule copie, distribuée pendant les tournois
+        /// Identique à Promo, sauf qu'il n'en existe qu'une seule copie
         /// </summary>
         Unique
     }

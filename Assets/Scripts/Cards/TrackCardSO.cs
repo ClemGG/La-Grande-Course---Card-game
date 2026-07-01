@@ -1,4 +1,3 @@
-using Assets.Scripts.ValueTypes;
 using UnityEngine;
 
 namespace Assets.Scripts.Cards

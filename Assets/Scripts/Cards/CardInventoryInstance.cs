@@ -24,6 +24,16 @@ namespace Assets.Scripts.Cards
         /// </summary>
         public readonly uint IllustrationID { get; }
 
+        /// <summary>
+        /// L'ID de l'extension d'où provient la carte
+        /// </summary>
+        public readonly uint SetID { get; }
+
+        /// <summary>
+        /// La position de la carte dans son extension correspondante
+        /// </summary>
+        public readonly uint SetSlotID { get; }
+
         #endregion
 
         #region Constructeur
@@ -34,11 +44,15 @@ namespace Assets.Scripts.Cards
         /// <param name="data">Données de la carte</param>=
         /// <param name="rarity">Rareté de la carte</param>
         /// <param name="illustrationID">L'illustration de la carte</param>
-        public CardInventoryInstance(CardBaseSO data, CardRarity rarity, uint illustrationID)
+        /// <param name="setID">L'ID de l'extension d'où provient la carte</param>
+        /// <param name="setSlotID">La position de la carte dans son extension correspondante</param>
+        public CardInventoryInstance(CardBaseSO data, CardRarity rarity, uint illustrationID, uint setID, uint setSlotID)
         {
             Data = data;
             Rarity = rarity;
             IllustrationID = illustrationID;
+            SetID = setID;
+            SetSlotID = setSlotID;
         }
 
         #endregion
