@@ -93,11 +93,12 @@ namespace Assets.Scripts.User
         /// <param name="username">Nom d'utilisateur</param>
         /// <param name="password">Mot de passe</param>
         /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
-        public void SetSessionUser(string username, string password, bool admin)
+        public void SetSessionUser(string username, string password, bool admin, bool newAccount = false)
         {
             Session.UserName = username;
             Session.Password = password;
             Session.Admin = admin;
+            Session.NewAccount = newAccount;
         }
 
         #endregion

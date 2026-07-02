@@ -9,22 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bb9414e1c0c932429283008ef0563d9, type: 3}
-  m_Name: 01_Base Set
-  m_EditorClassIdentifier: Assets.Scripts.Cards::Assets.Scripts.Cards.CardSetSO
+  m_Script: {fileID: 11500000, guid: f3f827de4180e104ca089cb88d942368, type: 3}
+  m_Name: S1B1
+  m_EditorClassIdentifier: Assets.Scripts.Cards::CardBoosterSO
   <Name>k__BackingField:
-    utf8LengthInBytes: 8
+    utf8LengthInBytes: 9
     bytes:
       offset0000:
         byte0000: 66
-        byte0001: 97
-        byte0002: 115
-        byte0003: 101
-        byte0004: 32
-        byte0005: 83
-        byte0006: 101
-        byte0007: 116
-        byte0008: 0
+        byte0001: 111
+        byte0002: 111
+        byte0003: 115
+        byte0004: 116
+        byte0005: 101
+        byte0006: 114
+        byte0007: 32
+        byte0008: 49
         byte0009: 0
         byte0010: 0
         byte0011: 0
@@ -148,17 +148,5 @@ MonoBehaviour:
       byte0123: 0
       byte0124: 0
       byte0125: 0
-  <ID>k__BackingField: 1
-  <RarityRates>k__BackingField:
-  - <Value>k__BackingField: 0
-    <Chance>k__BackingField: 50
-  - <Value>k__BackingField: 1
-    <Chance>k__BackingField: 30
-  - <Value>k__BackingField: 2
-    <Chance>k__BackingField: 19
-  - <Value>k__BackingField: 3
-    <Chance>k__BackingField: 1
-  <CommonCards>k__BackingField: []
-  <UnommonCards>k__BackingField: []
-  <RareCards>k__BackingField: []
-  <ChromaticCards>k__BackingField: []
+  <Cards>k__BackingField:
+  - {fileID: 11400000, guid: ee697bfc3ce46b34988b102d32688f20, type: 2}

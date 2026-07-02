@@ -206,7 +206,7 @@ namespace Assets.Scripts.User
             bool admin = _adminField.isOn;
 
             _vm.SetCredentialsCache(username, password, admin);
-            _vm.SetSessionUser(username, password, admin);
+            _vm.SetSessionUser(username, password, admin, true);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);
 
@@ -225,7 +225,7 @@ namespace Assets.Scripts.User
             bool admin = int.Parse(loginInfos[1]) == 1;
 
             _vm.SetCredentialsCache(username, password, admin);
-            _vm.SetSessionUser(username, password, admin);
+            _vm.SetSessionUser(username, password, admin, false);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);
 

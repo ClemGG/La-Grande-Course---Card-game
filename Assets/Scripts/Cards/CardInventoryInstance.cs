@@ -1,38 +1,51 @@
+using System;
 using Assets.Scripts.ValueTypes;
+using UnityEngine;
 
 namespace Assets.Scripts.Cards
 {
     /// <summary>
     /// Instance d'une carte dans l'inventaire du joueur
     /// </summary>
-    public readonly struct CardInventoryInstance
+    [Serializable]
+    public struct CardInventoryInstance
     {
         #region Propriétés
 
         /// <summary>
         /// Données de la carte
         /// </summary>
-        public readonly CardBaseSO Data { get; }
+        [Tooltip("Données de la carte")]
+        [field: SerializeField]
+        public CardBaseSO Data { get; private set; }
 
         /// <summary>
         /// Rareté de la carte
         /// </summary>
-        public readonly CardRarity Rarity { get; }
+        [Tooltip("Rareté de la carte")]
+        [field: SerializeField]
+        public CardRarity Rarity { get; private set; }
 
         /// <summary>
         /// L'illustration de la carte
         /// </summary>
-        public readonly uint IllustrationID { get; }
+        [Tooltip("L'illustration de la carte")]
+        [field: SerializeField]
+        public uint IllustrationID { get; private set; }
 
         /// <summary>
         /// L'ID de l'extension d'où provient la carte
         /// </summary>
-        public readonly uint SetID { get; }
+        [Tooltip("L'ID de l'extension d'où provient la carte")]
+        [field: SerializeField, Min(1)]
+        public uint SetID { get; private set; }
 
         /// <summary>
         /// La position de la carte dans son extension correspondante
         /// </summary>
-        public readonly uint SetSlotID { get; }
+        [Tooltip("La position de la carte dans son extension correspondante")]
+        [field: SerializeField, Min(1)]
+        public uint SetSlotID { get; private set; }
 
         #endregion
 

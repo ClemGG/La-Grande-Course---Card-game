@@ -45,7 +45,7 @@ namespace Assets.Scripts.Database
         {
             // Télécharge les assets (cartes, etc.) puis lance l'écran de connexion
 
-            _vm.LoadAssetsAsync(OnLoadAssetsSuccess);
+            _vm.LoadAssets(OnLoadAssetsSuccess);
         }
 
         #endregion

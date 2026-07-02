@@ -14,7 +14,7 @@ namespace Assets.Scripts.Database
         /// Charge les assets du jeu en asynchrone
         /// </summary>
         /// <param name="onComplete">Appelée une fois les assets chargées</param>
-        public void LoadAssetsAsync(Action onComplete)
+        public void LoadAssets(Action onComplete)
         {
             DatabaseHelper.LoadCardsAsync();
             onComplete?.Invoke();

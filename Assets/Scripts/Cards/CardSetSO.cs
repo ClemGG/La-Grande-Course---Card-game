@@ -9,7 +9,7 @@ namespace Assets.Scripts.Cards
     /// ainsi que les ratios de rareté de chacune
     /// </summary>
     [CreateAssetMenu(fileName = "New Set", menuName = "Scriptable Objects/La Grande Course/Cards/Set")]
-    public class CardSetSO : ScriptableObject
+    public sealed class CardSetSO : ScriptableObject
     {
         /// <summary>
         /// Le nom de l'extension
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Cards
         /// L'ID de l'extension
         /// </summary>
         [Tooltip("L'ID de l'extension")]
-        [field: SerializeField]
+        [field: SerializeField, Min(1)]
         public int ID { get; private set; }
 
         /// <summary>
@@ -33,31 +33,10 @@ namespace Assets.Scripts.Cards
         public ItemSelectionChance<CardRarity>[] RarityRates { get; private set; }
 
         /// <summary>
-        /// Liste des cartes communes de l'extension
-        /// </summary>
-        [Tooltip("Liste des cartes communes de l'extension")]
-        [field: SerializeField]
-        public CardBaseSO[] CommonCards { get; private set; }
-
-        /// <summary>
         /// Liste des cartes peu communes de l'extension
         /// </summary>
-        [Tooltip("Liste des cartes communes de l'extension")]
+        [Tooltip("Liste des paquets de l'extension")]
         [field: SerializeField]
-        public CardBaseSO[] UnommonCards { get; private set; }
-
-        /// <summary>
-        /// Liste des cartes rares de l'extension
-        /// </summary>
-        [Tooltip("Liste des cartes rares de l'extension")]
-        [field: SerializeField]
-        public CardBaseSO[] RareCards { get; private set; }
-
-        /// <summary>
-        /// Liste des cartes chromatiques de l'extension
-        /// </summary>
-        [Tooltip("Liste des cartes chromatiques de l'extension")]
-        [field: SerializeField]
-        public CardBaseSO[] ChromaticCards { get; private set; }
+        public CardBoosterSO[] Boosters { get; private set; }
     }
 }
