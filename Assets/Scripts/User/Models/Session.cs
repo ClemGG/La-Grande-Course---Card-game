@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.Collections;
 
 namespace Assets.Scripts.User
@@ -12,17 +13,17 @@ namespace Assets.Scripts.User
         /// <summary>
         /// Nom d'utilisateur
         /// </summary>
-        public static FixedString128Bytes UserName { get; set; }
+        public static FixedString128Bytes UserName { get; private set; }
 
         /// <summary>
         /// Le deck actif du joueur
         /// </summary>
-        public static DeckRecipeSO ActiveDeck { get; set; }
+        public static DecklistSO ActiveDeck { get; private set; }
 
         /// <summary>
         /// Les decks du joueur
         /// </summary>
-        public static DeckRecipeSO[] DeckRecipes { get; set; }
+        public static UserDecklists Decks { get; private set; }
 
         /// <summary>
         /// Mot de passe du joueur
@@ -64,6 +65,34 @@ namespace Assets.Scripts.User
         /// true si le compte est un admin
         /// </summary>
         private static bool _admin;
+
+        #endregion
+
+        #region Méthodes publiques
+
+        /// <summary>
+        /// Assigne les données de l'utilisateur pour la session active
+        /// </summary>
+        /// <param name="username">Nom d'utilisateur</param>
+        /// <param name="password">Mot de passe</param>
+        /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
+        /// <param name="newAccount">true si le compte vient d'être créé</param>
+        public static void SetUserCredentials(string username, string password, bool admin, bool newAccount = false)
+        {
+            UserName = username;
+            Password = password;
+            Admin = admin;
+            NewAccount = newAccount;
+        }
+
+        /// <summary>
+        /// Assigne les données de l'utilisateur pour la session active
+        /// </summary>
+        /// <param name="decks">Les decks du joueur</param>
+        public static void SetUserDecklists(UserDecklists decks)
+        {
+            Decks = decks;
+        }
 
         #endregion
     }

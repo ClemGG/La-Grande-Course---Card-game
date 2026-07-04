@@ -29,7 +29,7 @@ namespace Assets.Scripts.User
         /// <param name="password">Mot de passe</param>
         /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
         /// <returns>true si les données ont été récupérées</returns>
-        public bool TryGetCredentials(out string username, out string password, out bool admin)
+        public bool TryGetCredentialsInCache(out string username, out string password, out bool admin)
         {
             if (File.Exists(Path))
             {
@@ -85,21 +85,6 @@ namespace Assets.Scripts.User
         public void Login(string username, string password, Action<string> onComplete, Action<Exception> onError)
         {
             DatabaseHelper.LoginAsync(username, password, onComplete).WaitForResult(onError);
-        }
-
-        /// <summary>
-        /// Assigne les données de l'utilisateur pour la session active
-        /// </summary>
-        /// <param name="username">Nom d'utilisateur</param>
-        /// <param name="password">Mot de passe</param>
-        /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
-        /// <param name="newAccount">true si le compte vient d'être créé</param>
-        public void SetSessionUser(string username, string password, bool admin, bool newAccount = false)
-        {
-            Session.UserName = username;
-            Session.Password = password;
-            Session.Admin = admin;
-            Session.NewAccount = newAccount;
         }
 
         #endregion

@@ -14,7 +14,7 @@ namespace Assets.Scripts.Cards
         /// </summary>
         [Tooltip("Le nom de la carte")]
         [field: SerializeField]
-        public FixedString128Bytes Name { get; private set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Les différentes illustrations associées à cette carte

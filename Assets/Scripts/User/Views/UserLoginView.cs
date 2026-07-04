@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Assets.Scripts.Database;
 using Assets.Scripts.Scenes;
 using TMPro;
@@ -122,7 +123,7 @@ namespace Assets.Scripts.User
         /// </summary>
         private void Start()
         {
-            bool loginCacheExists = _vm.TryGetCredentials(out string username, out string password, out bool admin);
+            bool loginCacheExists = _vm.TryGetCredentialsInCache(out string username, out string password, out bool admin);
             _registerErrorMsg.gameObject.SetActive(false);
             _loginErrorMsg.gameObject.SetActive(false);
             _progressCanvas.enabled = false;
@@ -206,7 +207,7 @@ namespace Assets.Scripts.User
             bool admin = _adminField.isOn;
 
             _vm.SetCredentialsCache(username, password, admin);
-            _vm.SetSessionUser(username, password, admin, true);
+            Session.SetUserCredentials(username, password, admin, true);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);
 
@@ -223,13 +224,15 @@ namespace Assets.Scripts.User
             string password = _loginPasswordField.text;
             string[] loginInfos = loginInfo.Split('\n');
             bool admin = int.Parse(loginInfos[1]) == 1;
+            string decklistJson = loginInfos[2];
+            UserDecklists userDecklists = JsonUtility.FromJson<UserDecklists>(decklistJson);
 
             _vm.SetCredentialsCache(username, password, admin);
-            _vm.SetSessionUser(username, password, admin, false);
+            Session.SetUserCredentials(username, password, admin, false);
+            Session.SetUserDecklists(userDecklists);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);
 
-            print(admin);
             print("Logging successful");
         }
 
