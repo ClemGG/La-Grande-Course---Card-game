@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.Scripts.Cards;
 using Unity.Collections;
 
 namespace Assets.Scripts.User
@@ -13,7 +14,7 @@ namespace Assets.Scripts.User
         /// <summary>
         /// Nom d'utilisateur
         /// </summary>
-        public static FixedString128Bytes UserName { get; private set; }
+        public static string UserName { get; private set; }
 
         /// <summary>
         /// Le deck actif du joueur
@@ -28,7 +29,7 @@ namespace Assets.Scripts.User
         /// <summary>
         /// Mot de passe du joueur
         /// </summary>
-        public static FixedString64Bytes Password
+        public static string Password
         {
             set
             {
@@ -59,7 +60,7 @@ namespace Assets.Scripts.User
         /// <summary>
         /// Mot de passe du joueur
         /// </summary>
-        private static FixedString64Bytes _password;
+        private static string _password;
 
         /// <summary>
         /// true si le compte est un admin

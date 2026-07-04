@@ -176,7 +176,7 @@ namespace Assets.Scripts.User
         {
             try
             {
-                print("Logging...");
+                print("Logging in...");
                 _progressCanvas.enabled = true;
                 _registerErrorMsg.gameObject.SetActive(false);
                 string username = _loginUsernameField.text;

@@ -13,6 +13,13 @@ namespace Assets.Scripts.Cards
         #region Propriétés
 
         /// <summary>
+        /// Le nom de la carte
+        /// </summary>
+        [Tooltip("Le nom de la carte")]
+        [field: SerializeField]
+        public string Name { get; private set; }
+
+        /// <summary>
         /// L'ID de l'extension d'où provient la carte
         /// </summary>
         [Tooltip("L'ID de l'extension d'où provient la carte")]
@@ -47,12 +54,14 @@ namespace Assets.Scripts.Cards
         /// <summary>
         /// Constructeur
         /// </summary>
+        /// <param name="name">Nom de la carte</param>
         /// <param name="rarity">Rareté de la carte</param>
         /// <param name="illustrationID">L'illustration de la carte</param>
         /// <param name="setID">L'ID de l'extension d'où provient la carte</param>
         /// <param name="setSlotID">La position de la carte dans son extension correspondante</param>
-        public CardDecklistInstance(CardRarity rarity, uint illustrationID, uint setID, uint setSlotID)
+        public CardDecklistInstance(string name, CardRarity rarity, uint illustrationID, uint setID, uint setSlotID)
         {
+            Name = name;
             Rarity = rarity;
             IllustrationID = illustrationID;
             SetID = setID;

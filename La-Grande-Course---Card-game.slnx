@@ -1,7 +1,7 @@
 ﻿<Solution>
-  <Project Path="Assets.Scripts.User.csproj" />
   <Project Path="Assets.csproj" />
   <Project Path="AYellowpaper.SerializedCollections.csproj" />
+  <Project Path="Assets.Scripts.User.csproj" />
   <Project Path="AYellowpaper.SerializedCollections.Editor.csproj" />
   <Project Path="Assets.Scripts.ValueTypes.csproj" />
   <Project Path="Assets.Scripts.Cards.csproj" />
@@ -9,5 +9,6 @@
   <Project Path="Assets.Scripts.Extensions.csproj" />
   <Project Path="Assets.Scripts.Scenes.csproj" />
   <Project Path="Assets.Editor.csproj" />
+  <Project Path="Assets.Scripts.MainMenu.csproj" />
   <Project Path="Assets.Scripts.PropertyAttributes.csproj" />
 </Solution>

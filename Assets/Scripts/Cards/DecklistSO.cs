@@ -1,7 +1,6 @@
-using Assets.Scripts.Cards;
 using UnityEngine;
 
-namespace Assets.Scripts.User
+namespace Assets.Scripts.Cards
 {
     /// <summary>
     /// Recette référençant la liste de cartes composant un deck

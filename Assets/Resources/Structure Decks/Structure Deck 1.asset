@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assets.Scripts.User::Assets.Scripts.User.DeckRecipeSO
   <Name>k__BackingField: Structure Deck 1
   <Cards>k__BackingField:
-  - <Data>k__BackingField: {fileID: 11400000, guid: ee697bfc3ce46b34988b102d32688f20, type: 2}
-    <Rarity>k__BackingField: 0
-    <IllustrationID>k__BackingField: 0
+  - <Name>k__BackingField: New Racer Card
     <SetID>k__BackingField: 1
     <SetSlotID>k__BackingField: 1
+    <IllustrationID>k__BackingField: 0
+    <Rarity>k__BackingField: 0
