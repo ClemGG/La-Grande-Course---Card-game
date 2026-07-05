@@ -14,8 +14,8 @@ namespace Assets.Scripts.Cards
         /// La recette
         /// </summary>
         [Tooltip("La recette")]
-        [SerializeField]
-        public DeckList Value;
+        [field: SerializeField]
+        public DeckList Value { get; private set; }
 
         #endregion
     }

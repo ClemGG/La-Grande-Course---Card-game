@@ -14,8 +14,8 @@ namespace Assets.Scripts.User
         /// <summary>
         /// Les decks du joueur
         /// </summary>
-        [SerializeField]
-        public List<DeckList> Value;
+        [field: SerializeField]
+        public List<DeckList> Value { get; private set; }
 
         #endregion
 

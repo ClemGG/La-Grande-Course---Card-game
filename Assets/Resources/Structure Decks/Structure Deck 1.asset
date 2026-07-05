@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5114dda6733d3a6439fae807ba17a6b1, type: 3}
   m_Name: Structure Deck 1
   m_EditorClassIdentifier: Assets.Scripts.User::Assets.Scripts.User.DeckRecipeSO
-  Value:
-    Name: Structure Deck 1
-    Cards:
+  <Value>k__BackingField:
+    <Name>k__BackingField: Structure Deck 1
+    <Cards>k__BackingField:
     - <Name>k__BackingField: New Racer Card
       <SetID>k__BackingField: 1
       <SetSlotID>k__BackingField: 1
