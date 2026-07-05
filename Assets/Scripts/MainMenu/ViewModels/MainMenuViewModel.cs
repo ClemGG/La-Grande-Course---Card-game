@@ -15,13 +15,14 @@ namespace Assets.Scripts.MainMenu
         /// <summary>
         /// Déconnecte l'utilisateur
         /// </summary>
+        /// <param name="username">Nom d'utilisateur</param>
+        /// <param name="decklistsJson">Decks du joueur</param>
         /// <param name="onComplete">Appelée une fois la déconnexion réussie</param>
         /// <param name="onError">Appelée si une erreur se produit pendant une opération</param>
-        public void Logout(Action onComplete, Action<Exception> onError)
+        public void Logout(string username, string decklistsJson, Action onComplete, Action<Exception> onError)
         {
-            // TAF: Déconnecter l'utilisateur
-            // et enregistrer ses changements
-            DatabaseHelper.LogoutAsync(onComplete).WaitForResult(onError);
+            // TAF: Déconnecter l'utilisateur et enregistrer ses changements
+            DatabaseHelper.LogoutAsync(username, decklistsJson, onComplete).WaitForResult(onError);
         }
 
         #endregion

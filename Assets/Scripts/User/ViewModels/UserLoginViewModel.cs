@@ -29,7 +29,7 @@ namespace Assets.Scripts.User
         /// <param name="password">Mot de passe</param>
         /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
         /// <returns>true si les données ont été récupérées</returns>
-        public bool TryGetCredentialsInCache(out string username, out string password, out bool admin)
+        internal bool TryGetCredentialsInCache(out string username, out string password, out bool admin)
         {
             if (File.Exists(Path))
             {
@@ -53,7 +53,7 @@ namespace Assets.Scripts.User
         /// <param name="username">Nom d'utilisateur</param>
         /// <param name="password">Mot de passe</param>
         /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
-        public void SetCredentialsCache(string username, string password, bool admin)
+        internal void SetCredentialsCache(string username, string password, bool admin)
         {
             if (!Directory.Exists(Constants.DEFAULT_LOGIN_CACHE_DIR_PATH))
                 Directory.CreateDirectory(Constants.DEFAULT_LOGIN_CACHE_DIR_PATH);
@@ -70,7 +70,7 @@ namespace Assets.Scripts.User
         /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
         /// <param name="onComplete">Appelée une fois l'opération terminée</param>
         /// <param name="onError">Appelée quand une exception est levée</param>
-        public void Register(string username, string password, bool admin, Action onComplete, Action<Exception> onError)
+        internal void Register(string username, string password, bool admin, Action onComplete, Action<Exception> onError)
         {
             DatabaseHelper.RegisterAsync(username, password, admin, onComplete).WaitForResult(onError);
         }
@@ -82,9 +82,23 @@ namespace Assets.Scripts.User
         /// <param name="password">Mot de passe</param>
         /// <param name="onComplete">Appelée une fois l'opération terminée</param>
         /// <param name="onError">Appelée quand une exception est levée</param>
-        public void Login(string username, string password, Action<string> onComplete, Action<Exception> onError)
+        internal void Login(string username, string password, Action<string> onComplete, Action<Exception> onError)
         {
             DatabaseHelper.LoginAsync(username, password, onComplete).WaitForResult(onError);
+        }
+
+        /// <summary>
+        /// Assigne les données de la session
+        /// </summary>
+        /// <param name="username">Nom d'utilisateur</param>
+        /// <param name="password">Mot de passe</param>
+        /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
+        /// <param name="newAccount">true si le compte vient d'être créé</param>
+        /// <param name="userDecklists">Les decks du joueur</param>
+        internal void SetSessionUserData(string username, string password, bool admin, bool newAccount, UserDecklists userDecklists)
+        {
+            Session.SetUserCredentials(username, password, admin, newAccount);
+            Session.SetUserDecklists(userDecklists);
         }
 
         #endregion

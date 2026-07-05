@@ -17,9 +17,9 @@ namespace Assets.Scripts.User
         public static string UserName { get; private set; }
 
         /// <summary>
-        /// Le deck actif du joueur
+        /// L'ID du deck actif dans la liste de decks du joueur
         /// </summary>
-        public static DecklistSO ActiveDeck { get; private set; }
+        public static int ActiveDeckID { get; private set; }
 
         /// <summary>
         /// Les decks du joueur

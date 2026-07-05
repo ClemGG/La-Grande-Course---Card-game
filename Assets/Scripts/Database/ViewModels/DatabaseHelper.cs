@@ -98,9 +98,13 @@ namespace Assets.Scripts.Database
         /// Déconnecte l'utilisateur
         /// </summary>
         /// <param name="onComplete">Appelée une fois l'opération terminée</param>
-        public static async Awaitable LogoutAsync(Action onComplete)
+        /// <param name="username">Nom d'utilisateur</param>
+        /// <param name="decklistsJson">Decks du joueur</param>
+        public static async Awaitable LogoutAsync(string username, string decklistsJson, Action onComplete)
         {
             WWWForm form = new();
+            form.AddField("username", username);
+            form.AddField("decklists", decklistsJson);
 
             using UnityWebRequest request = UnityWebRequest.Post(Constants.LOGOUT_URI, form);
             await Awaitable.FromAsyncOperation(request.SendWebRequest(), Application.exitCancellationToken);

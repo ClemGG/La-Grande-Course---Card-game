@@ -1,4 +1,5 @@
 using System;
+using Assets.Scripts.Cards;
 using Assets.Scripts.Scenes;
 using Assets.Scripts.User;
 using TMPro;
@@ -110,7 +111,8 @@ namespace Assets.Scripts.MainMenu
                 _progressCanvas.enabled = true;
                 _logoutErrorMsgLabel.gameObject.SetActive(false);
 
-                _vm.Logout(quit ? OnCancelQuitLogoutSuccess : OnNormalLogoutSuccess, OnExceptionThrown);
+                string decklistsJson = JsonUtility.ToJson(Session.Decks, true);
+                _vm.Logout(Session.UserName, decklistsJson, quit ? OnCancelQuitLogoutSuccess : OnNormalLogoutSuccess, OnExceptionThrown);
             }
             catch (Exception e)
             {
@@ -129,7 +131,7 @@ namespace Assets.Scripts.MainMenu
         {
             SceneManager.LoadSceneAsync(_loginScene);
 
-            print("Logout successful");
+            print("Logout successful. Returning to the login screen...");
         }
 
         /// <summary>

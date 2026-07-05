@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using Assets.Scripts.Cards;
 using Assets.Scripts.Database;
 using Assets.Scripts.Scenes;
 using TMPro;
@@ -207,7 +209,7 @@ namespace Assets.Scripts.User
             bool admin = _adminField.isOn;
 
             _vm.SetCredentialsCache(username, password, admin);
-            Session.SetUserCredentials(username, password, admin, true);
+            _vm.SetSessionUserData(username, password, admin, true, new UserDecklists());
 
             SceneManager.LoadSceneAsync(_mainMenuScene);
 
@@ -228,8 +230,7 @@ namespace Assets.Scripts.User
             UserDecklists userDecklists = JsonUtility.FromJson<UserDecklists>(decklistJson);
 
             _vm.SetCredentialsCache(username, password, admin);
-            Session.SetUserCredentials(username, password, admin, false);
-            Session.SetUserDecklists(userDecklists);
+            _vm.SetSessionUserData(username, password, admin, false, userDecklists);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);
 

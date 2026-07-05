@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 564205128}
+      - m_Target: {fileID: 1383481352}
         m_TargetAssemblyTypeName: Assets.Scripts.MainMenu.MainMenuView, Assets.Scripts.MainMenu
         m_MethodName: Logout
         m_Mode: 6
@@ -1720,7 +1720,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 564205128}
+      - m_Target: {fileID: 1383481352}
         m_TargetAssemblyTypeName: Assets.Scripts.MainMenu.MainMenuView, Assets.Scripts.MainMenu
         m_MethodName: Logout
         m_Mode: 6
@@ -2278,8 +2278,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 564205127}
-  - component: {fileID: 564205128}
-  - component: {fileID: 564205129}
   m_Layer: 0
   m_Name: --- Managers
   m_TagString: Untagged
@@ -2299,41 +2297,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1383481350}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &564205128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564205126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f776c8567dc26d448cc42e80a67104a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assets::MainMenuView
-  _usernameLabel: {fileID: 713616875}
-  _logoutErrorMsgLabel: {fileID: 1739976537}
-  _progressCanvas: {fileID: 1749490837}
-  _loginPopupConfirmationCanvas: {fileID: 4416212721843481301}
-  _quitPopupConfirmationCanvas: {fileID: 905403268}
-  _loginScene:
-    sceneAsset: {fileID: 102900000, guid: ebffd3437688cda4cbafb3d0df890cb4, type: 3}
-    scenePath: Assets/Scenes/Login Scene.unity
---- !u!114 &564205129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564205126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3ed875fa0ef2924a8fb5c944e2072c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assets.Scripts.MainMenu::Assets.Scripts.MainMenu.MainMenuViewModel
 --- !u!1 &578699966
 GameObject:
   m_ObjectHideFlags: 0
@@ -4072,7 +4039,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -66730}
+  m_AnchoredPosition: {x: 0, y: -78670}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &839004641
@@ -5173,6 +5140,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301677285}
   m_CullTransparentMesh: 1
+--- !u!1 &1383481349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1383481350}
+  - component: {fileID: 1383481352}
+  - component: {fileID: 1383481351}
+  m_Layer: 0
+  m_Name: Main Menu Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1383481350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383481349}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 564205127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1383481351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383481349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ed875fa0ef2924a8fb5c944e2072c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assets.Scripts.MainMenu::Assets.Scripts.MainMenu.MainMenuViewModel
+--- !u!114 &1383481352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383481349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f776c8567dc26d448cc42e80a67104a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assets::MainMenuView
+  _usernameLabel: {fileID: 713616875}
+  _logoutErrorMsgLabel: {fileID: 1739976537}
+  _progressCanvas: {fileID: 1749490837}
+  _loginPopupConfirmationCanvas: {fileID: 4416212721843481301}
+  _quitPopupConfirmationCanvas: {fileID: 905403268}
+  _loginScene:
+    sceneAsset: {fileID: 102900000, guid: ebffd3437688cda4cbafb3d0df890cb4, type: 3}
+    scenePath: Assets/Scenes/Login Scene.unity
 --- !u!1 &1482445203
 GameObject:
   m_ObjectHideFlags: 0

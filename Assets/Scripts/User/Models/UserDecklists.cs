@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets.Scripts.Cards;
+using UnityEngine;
 
 namespace Assets.Scripts.User
 {
@@ -13,7 +14,8 @@ namespace Assets.Scripts.User
         /// <summary>
         /// Les decks du joueur
         /// </summary>
-        public List<DecklistSO> Decklists { get; private set; }
+        [SerializeField]
+        public List<DeckList> Value;
 
         #endregion
 
@@ -22,10 +24,19 @@ namespace Assets.Scripts.User
         /// <summary>
         /// Constructeur
         /// </summary>
-        /// <param name="decklists">Les decks du joueur</param>
-        public UserDecklists(DecklistSO[] userDecklists)
+        public UserDecklists(List<DeckList> value)
         {
-            Decklists = new List<DecklistSO>(userDecklists);
+            Value = value;
+        }
+
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="decklists">Les decks du joueur</param>
+        public UserDecklists(DeckList[] decklists)
+        {
+            Value = new List<DeckList>(decklists);
+            Value.AddRange(decklists);
         }
 
         #endregion
