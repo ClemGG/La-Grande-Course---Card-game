@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Assets.Scripts.Cards;
 using Unity.Collections;
@@ -78,7 +79,7 @@ namespace Assets.Scripts.User
         /// <param name="password">Mot de passe</param>
         /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
         /// <param name="newAccount">true si le compte vient d'être créé</param>
-        public static void SetUserCredentials(string username, string password, bool admin, bool newAccount = false)
+        internal static void SetUserCredentials(string username, string password, bool admin, bool newAccount = false)
         {
             UserName = username;
             Password = password;
@@ -90,9 +91,18 @@ namespace Assets.Scripts.User
         /// Assigne les données de l'utilisateur pour la session active
         /// </summary>
         /// <param name="decks">Les decks du joueur</param>
-        public static void SetUserDecklists(UserDecklists decks)
+        internal static void SetUserDecklists(UserDecklists decks)
         {
             Decks = decks;
+        }
+
+        /// <summary>
+        /// Assigne les préférences du joueur
+        /// </summary>
+        /// <param name="preferences">Préférences du joueur</param>
+        internal static void SetUserPreferences(UserPreferences preferences)
+        {
+            ActiveDeckID = preferences.ActiveDeckID;
         }
 
         #endregion

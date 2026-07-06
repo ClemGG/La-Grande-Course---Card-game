@@ -194,8 +194,14 @@ namespace Assets.Scripts.User
             string password = _registerPasswordField.text;
             bool admin = _adminField.isOn;
 
+            if (!_vm.TryGetPreferencesInCache(out UserPreferences preferences))
+            {
+                preferences = new UserPreferences(0);
+            }
+
             _vm.SetCredentialsCache(username, PasswordEncryption.Encrypt(password, username));
-            _vm.SetSessionUserData(username, password, admin, true, new UserDecklists());
+            _vm.SetPreferencesCache(preferences);
+            _vm.SetSessionUserData(username, password, admin, true, new UserDecklists(), preferences);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);
 
@@ -213,10 +219,17 @@ namespace Assets.Scripts.User
             string[] loginInfos = loginInfo.Split('\n');
             bool admin = int.Parse(loginInfos[1]) == 1;
             string decklistJson = loginInfos[2];
+
             UserDecklists userDecklists = JsonUtility.FromJson<UserDecklists>(decklistJson);
 
+            if (!_vm.TryGetPreferencesInCache(out UserPreferences preferences))
+            {
+                preferences = new UserPreferences(0);
+            }
+
             _vm.SetCredentialsCache(username, PasswordEncryption.Encrypt(password, username));
-            _vm.SetSessionUserData(username, password, admin, false, userDecklists);
+            _vm.SetPreferencesCache(preferences);
+            _vm.SetSessionUserData(username, password, admin, false, userDecklists, preferences);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);
 

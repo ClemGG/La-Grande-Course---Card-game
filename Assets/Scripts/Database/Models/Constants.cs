@@ -19,14 +19,19 @@ namespace Assets.Scripts.Database
         #region Login
 
         /// <summary>
-        /// Chemin d'accès par défaut du fichier contenant les infos de login du joueur
+        /// Chemin d'accès par défaut du fichier contenant les infos du joueur (login, préférences...)
         /// </summary>
-        public static readonly string DEFAULT_LOGIN_CACHE_DIR_PATH = $"{Application.streamingAssetsPath}/User/Login/";
+        public static readonly string DEFAULT_USER_CACHE_DIR_PATH = $"{Application.streamingAssetsPath}/User/";
 
         /// <summary>
         /// Chemin d'accès par défaut du fichier contenant les infos de login du joueur
         /// </summary>
         public const string DEFAULT_LOGIN_CACHE_FILE_NAME = "LoginCache.txt";
+
+        /// <summary>
+        /// Chemin d'accès par défaut du fichier contenant les préférences du joueur
+        /// </summary>
+        public const string DEFAULT_PREFS_CACHE_FILE_NAME = "PrefsCache.txt";
 
         #endregion
 

@@ -9,6 +9,8 @@ namespace Assets.Scripts.User
     [Serializable]
     public struct UserCredentials
     {
+        #region Propriétés
+
         /// <summary>
         /// Nom d'utilisateur
         /// </summary>
@@ -21,6 +23,10 @@ namespace Assets.Scripts.User
         [field: SerializeField]
         public string PasswordHash { get; private set; }
 
+        #endregion
+
+        #region Constructeur
+
         /// <summary>
         /// Constructeur
         /// </summary>
@@ -31,5 +37,7 @@ namespace Assets.Scripts.User
             Username = username;
             PasswordHash = passwordHash;
         }
+
+        #endregion
     }
 }
