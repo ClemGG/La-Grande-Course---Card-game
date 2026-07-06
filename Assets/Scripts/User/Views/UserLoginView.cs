@@ -4,6 +4,7 @@ using System.IO;
 using Assets.Scripts.Cards;
 using Assets.Scripts.Database;
 using Assets.Scripts.Scenes;
+using Assets.Scripts.User.ViewModels;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,7 @@ namespace Assets.Scripts.User
     /// <summary>
     /// Interface de la partie enreigstrement/connexion du joueur
     /// </summary>
+    [RequireComponent(typeof(UserLoginViewModel))]
     public class UserLoginView : MonoBehaviour
     {
         #region Variables Unity
@@ -93,21 +95,6 @@ namespace Assets.Scripts.User
         /// </summary>
         private UserLoginViewModel _vm;
 
-        /// <summary>
-        /// Nom d'utilisateur
-        /// </summary>
-        private string _login;
-
-        /// <summary>
-        /// Mot de passe
-        /// </summary>
-        private string _password;
-
-        /// <summary>
-        /// Mot de passe
-        /// </summary>
-        private bool _isAdmin;
-
         #endregion
 
         #region Méthodes Unity
@@ -125,7 +112,7 @@ namespace Assets.Scripts.User
         /// </summary>
         private void Start()
         {
-            bool loginCacheExists = _vm.TryGetCredentialsInCache(out string username, out string password, out bool admin);
+            bool loginCacheExists = _vm.TryGetCredentialsInCache(out string username, out string passwordHash);
             _registerErrorMsg.gameObject.SetActive(false);
             _loginErrorMsg.gameObject.SetActive(false);
             _progressCanvas.enabled = false;
@@ -137,8 +124,7 @@ namespace Assets.Scripts.User
             if (loginCacheExists)
             {
                 _loginUsernameField.SetTextWithoutNotify(username);
-                _loginPasswordField.SetTextWithoutNotify(password);
-                _adminField.SetIsOnWithoutNotify(admin);
+                _loginPasswordField.SetTextWithoutNotify(PasswordEncryption.Decrypt(passwordHash, username));
             }
         }
 
@@ -208,7 +194,7 @@ namespace Assets.Scripts.User
             string password = _registerPasswordField.text;
             bool admin = _adminField.isOn;
 
-            _vm.SetCredentialsCache(username, password, admin);
+            _vm.SetCredentialsCache(username, PasswordEncryption.Encrypt(password, username));
             _vm.SetSessionUserData(username, password, admin, true, new UserDecklists());
 
             SceneManager.LoadSceneAsync(_mainMenuScene);
@@ -229,7 +215,7 @@ namespace Assets.Scripts.User
             string decklistJson = loginInfos[2];
             UserDecklists userDecklists = JsonUtility.FromJson<UserDecklists>(decklistJson);
 
-            _vm.SetCredentialsCache(username, password, admin);
+            _vm.SetCredentialsCache(username, PasswordEncryption.Encrypt(password, username));
             _vm.SetSessionUserData(username, password, admin, false, userDecklists);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);

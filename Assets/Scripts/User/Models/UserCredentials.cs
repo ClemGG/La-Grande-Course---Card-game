@@ -19,25 +19,17 @@ namespace Assets.Scripts.User
         /// Mot de passe
         /// </summary>
         [field: SerializeField]
-        public string Password { get; private set; }
-
-        /// <summary>
-        /// true si l'utilisateur est un admin
-        /// </summary>
-        [field: SerializeField]
-        public bool Admin { get; private set; }
+        public string PasswordHash { get; private set; }
 
         /// <summary>
         /// Constructeur
         /// </summary>
         /// <param name="username">Nom d'utilisateur</param>
-        /// <param name="password">Mot de passe</param>
-        /// <param name="admin">true si l'utilisateur est un admin</param>
-        public UserCredentials(string username, string password, bool admin)
+        /// <param name="passwordHash">Mot de passe chiffré</param>
+        public UserCredentials(string username, string passwordHash)
         {
             Username = username;
-            Password = password;
-            Admin = admin;
+            PasswordHash = passwordHash;
         }
     }
 }

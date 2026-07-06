@@ -26,10 +26,9 @@ namespace Assets.Scripts.User
         /// Tente d'obtenir les identifiants du joueur depuis le cache
         /// </summary>
         /// <param name="username">Nom d'utilisateur</param>
-        /// <param name="password">Mot de passe</param>
-        /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
+        /// <param name="passwordHash">Mot de passe chiffré</param>
         /// <returns>true si les données ont été récupérées</returns>
-        internal bool TryGetCredentialsInCache(out string username, out string password, out bool admin)
+        internal bool TryGetCredentialsInCache(out string username, out string passwordHash)
         {
             if (File.Exists(Path))
             {
@@ -37,13 +36,11 @@ namespace Assets.Scripts.User
                 UserCredentials credentials = JsonUtility.FromJson<UserCredentials>(json);
 
                 username = credentials.Username;
-                password = credentials.Password;
-                admin = credentials.Admin;
+                passwordHash = credentials.PasswordHash;
                 return true;
             }
 
-            username = password = string.Empty;
-            admin = false;
+            username = passwordHash = string.Empty;
             return false;
         }
 
@@ -52,13 +49,12 @@ namespace Assets.Scripts.User
         /// </summary>
         /// <param name="username">Nom d'utilisateur</param>
         /// <param name="password">Mot de passe</param>
-        /// <param name="admin">true si l'utilisateur a des droits administrateurs</param>
-        internal void SetCredentialsCache(string username, string password, bool admin)
+        internal void SetCredentialsCache(string username, string password)
         {
             if (!Directory.Exists(Constants.DEFAULT_LOGIN_CACHE_DIR_PATH))
                 Directory.CreateDirectory(Constants.DEFAULT_LOGIN_CACHE_DIR_PATH);
 
-            string json = JsonUtility.ToJson(new UserCredentials(username, password, admin), true);
+            string json = JsonUtility.ToJson(new UserCredentials(username, password), true);
             File.WriteAllText(Path, json, System.Text.Encoding.Unicode);
         }
 
