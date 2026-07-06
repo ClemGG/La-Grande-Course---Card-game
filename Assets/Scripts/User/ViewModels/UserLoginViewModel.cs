@@ -13,16 +13,6 @@ namespace Assets.Scripts.User
     {
         #region Propriétés
 
-        /// <summary>
-        /// Chemin d'accès complet
-        /// </summary>
-        private string LoginPath => $"{Constants.DEFAULT_USER_CACHE_DIR_PATH}{Constants.DEFAULT_LOGIN_CACHE_FILE_NAME}";
-
-        /// <summary>
-        /// Chemin d'accès complet
-        /// </summary>
-        private string PreferencesPath => $"{Constants.DEFAULT_USER_CACHE_DIR_PATH}{Constants.DEFAULT_PREFS_CACHE_FILE_NAME}";
-
         #endregion
 
         #region Méthodes publiques
@@ -35,9 +25,9 @@ namespace Assets.Scripts.User
         /// <returns>true si les données ont été récupérées</returns>
         internal bool TryGetCredentialsInCache(out string username, out string passwordHash)
         {
-            if (File.Exists(LoginPath))
+            if (File.Exists(Constants.CREDENTIALS_PATH))
             {
-                string json = File.ReadAllText(LoginPath, System.Text.Encoding.Unicode);
+                string json = File.ReadAllText(Constants.CREDENTIALS_PATH, System.Text.Encoding.Unicode);
                 UserCredentials credentials = JsonUtility.FromJson<UserCredentials>(json);
 
                 username = credentials.Username;
@@ -56,9 +46,9 @@ namespace Assets.Scripts.User
         /// <returns>true si les données ont été récupérées</returns>
         internal bool TryGetPreferencesInCache(out UserPreferences preferences)
         {
-            if (File.Exists(PreferencesPath))
+            if (File.Exists(Constants.PREFERENCES_PATH))
             {
-                string json = File.ReadAllText(LoginPath, System.Text.Encoding.Unicode);
+                string json = File.ReadAllText(Constants.PREFERENCES_PATH, System.Text.Encoding.Unicode);
                 preferences = JsonUtility.FromJson<UserPreferences>(json);
                 return true;
             }
@@ -78,7 +68,7 @@ namespace Assets.Scripts.User
                 Directory.CreateDirectory(Constants.DEFAULT_USER_CACHE_DIR_PATH);
 
             string json = JsonUtility.ToJson(new UserCredentials(username, password), true);
-            File.WriteAllText(LoginPath, json, System.Text.Encoding.Unicode);
+            File.WriteAllText(Constants.CREDENTIALS_PATH, json, System.Text.Encoding.Unicode);
         }
 
         /// <summary>
@@ -91,7 +81,7 @@ namespace Assets.Scripts.User
                 Directory.CreateDirectory(Constants.DEFAULT_USER_CACHE_DIR_PATH);
 
             string json = JsonUtility.ToJson(preferences, true);
-            File.WriteAllText(PreferencesPath, json, System.Text.Encoding.Unicode);
+            File.WriteAllText(Constants.PREFERENCES_PATH, json, System.Text.Encoding.Unicode);
         }
 
         /// <summary>

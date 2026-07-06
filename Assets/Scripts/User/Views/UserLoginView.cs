@@ -4,7 +4,7 @@ using System.IO;
 using Assets.Scripts.Cards;
 using Assets.Scripts.Database;
 using Assets.Scripts.Scenes;
-using Assets.Scripts.User.ViewModels;
+using Assets.Scripts.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -124,7 +124,7 @@ namespace Assets.Scripts.User
             if (loginCacheExists)
             {
                 _loginUsernameField.SetTextWithoutNotify(username);
-                _loginPasswordField.SetTextWithoutNotify(PasswordEncryption.Decrypt(passwordHash, username));
+                _loginPasswordField.SetTextWithoutNotify(PasswordEncryptionService.Decrypt(passwordHash, username));
             }
         }
 
@@ -196,11 +196,10 @@ namespace Assets.Scripts.User
 
             if (!_vm.TryGetPreferencesInCache(out UserPreferences preferences))
             {
-                preferences = new UserPreferences(0);
+                _vm.SetPreferencesCache(preferences);
             }
 
-            _vm.SetCredentialsCache(username, PasswordEncryption.Encrypt(password, username));
-            _vm.SetPreferencesCache(preferences);
+            _vm.SetCredentialsCache(username, PasswordEncryptionService.Encrypt(password, username));
             _vm.SetSessionUserData(username, password, admin, true, new UserDecklists(), preferences);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);
@@ -224,11 +223,10 @@ namespace Assets.Scripts.User
 
             if (!_vm.TryGetPreferencesInCache(out UserPreferences preferences))
             {
-                preferences = new UserPreferences(0);
+                _vm.SetPreferencesCache(preferences);
             }
 
-            _vm.SetCredentialsCache(username, PasswordEncryption.Encrypt(password, username));
-            _vm.SetPreferencesCache(preferences);
+            _vm.SetCredentialsCache(username, PasswordEncryptionService.Encrypt(password, username));
             _vm.SetSessionUserData(username, password, admin, false, userDecklists, preferences);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);

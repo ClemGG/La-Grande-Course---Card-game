@@ -5,6 +5,7 @@
   <Project Path="AYellowpaper.SerializedCollections.Editor.csproj" />
   <Project Path="Assets.Scripts.ValueTypes.csproj" />
   <Project Path="Assets.Scripts.Cards.csproj" />
+  <Project Path="Assets.Scripts.Services.csproj" />
   <Project Path="Assets.Scripts.Database.csproj" />
   <Project Path="Assets.Scripts.Extensions.csproj" />
   <Project Path="Assets.Scripts.Scenes.csproj" />

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Assets.Scripts.User.ViewModels
+namespace Assets.Scripts.Services
 {
     /// <summary>
     /// Chiffre un mot de passe
     /// </summary>
-    public static class PasswordEncryption
+    public static class PasswordEncryptionService
     {
         /// <summary>
         /// This constant is used to determine the keysize of the encryption algorithm in bits.
