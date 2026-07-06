@@ -11,10 +11,6 @@ namespace Assets.Scripts.User
     /// </summary>
     public class UserLoginViewModel : MonoBehaviour
     {
-        #region Propriétés
-
-        #endregion
-
         #region Méthodes publiques
 
         /// <summary>

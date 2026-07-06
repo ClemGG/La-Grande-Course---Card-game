@@ -1,7 +1,9 @@
 {
     "name": "Assets.Scripts.Services",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:5c597321da8e9664aaef5796229a5422"
+    ],
     "includePlatforms": [
         "Editor",
         "WebGL",
