@@ -7,7 +7,7 @@ namespace Assets.Scripts.Cards
     /// Recette référençant la liste de cartes composant un deck
     /// </summary>
     [Serializable]
-    public struct DeckList
+    public struct Decklist
     {
         #region Propriétés
 
@@ -34,7 +34,7 @@ namespace Assets.Scripts.Cards
         /// </summary>
         /// <param name="name">Le nom du deck</param>
         /// <param name="cards">Liste de cartes</param>
-        public DeckList(string name, CardDecklistInstance[] cards)
+        public Decklist(string name, CardDecklistInstance[] cards)
         {
             Name = name;
             Cards = cards;

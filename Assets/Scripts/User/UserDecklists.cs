@@ -15,7 +15,7 @@ namespace Assets.Scripts.User
         /// Les decks du joueur
         /// </summary>
         [field: SerializeField]
-        public List<DeckList> Value { get; private set; }
+        public List<Decklist> Value { get; private set; }
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace Assets.Scripts.User
         /// <summary>
         /// Constructeur
         /// </summary>
-        public UserDecklists(List<DeckList> value)
+        public UserDecklists(List<Decklist> value)
         {
             Value = value;
         }
@@ -33,9 +33,9 @@ namespace Assets.Scripts.User
         /// Constructeur
         /// </summary>
         /// <param name="decklists">Les decks du joueur</param>
-        public UserDecklists(DeckList[] decklists)
+        public UserDecklists(Decklist[] decklists)
         {
-            Value = new List<DeckList>(decklists);
+            Value = new List<Decklist>(decklists);
             Value.AddRange(decklists);
         }
 

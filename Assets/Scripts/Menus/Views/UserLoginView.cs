@@ -1,16 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using Assets.Scripts.Cards;
-using Assets.Scripts.Database;
 using Assets.Scripts.Scenes;
 using Assets.Scripts.Services;
+using Assets.Scripts.User;
+using Assets.Scripts.ValueTypes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.User
+namespace Assets.Scripts.Menus
 {
     /// <summary>
     /// Interface de la partie enreigstrement/connexion du joueur
@@ -112,7 +110,7 @@ namespace Assets.Scripts.User
         /// </summary>
         private void Start()
         {
-            bool loginCacheExists = _vm.TryGetCredentialsInCache(out string username, out string passwordHash);
+            bool loginCacheExists = CacheService.TryGetCredentialsInCache(out string username, out string passwordHash);
             _registerErrorMsg.gameObject.SetActive(false);
             _loginErrorMsg.gameObject.SetActive(false);
             _progressCanvas.enabled = false;
@@ -194,12 +192,7 @@ namespace Assets.Scripts.User
             string password = _registerPasswordField.text;
             bool admin = _adminField.isOn;
 
-            if (!_vm.TryGetPreferencesInCache(out UserPreferences preferences))
-            {
-                _vm.SetPreferencesCache(preferences);
-            }
-
-            _vm.SetCredentialsCache(username, PasswordEncryptionService.Encrypt(password, username));
+            _vm.WriteToCache(username, password, out UserPreferences preferences);
             _vm.SetSessionUserData(username, password, admin, true, new UserDecklists(), preferences);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);
@@ -218,15 +211,9 @@ namespace Assets.Scripts.User
             string[] loginInfos = loginInfo.Split('\n');
             bool admin = int.Parse(loginInfos[1]) == 1;
             string decklistJson = loginInfos[2];
-
             UserDecklists userDecklists = JsonUtility.FromJson<UserDecklists>(decklistJson);
 
-            if (!_vm.TryGetPreferencesInCache(out UserPreferences preferences))
-            {
-                _vm.SetPreferencesCache(preferences);
-            }
-
-            _vm.SetCredentialsCache(username, PasswordEncryptionService.Encrypt(password, username));
+            _vm.WriteToCache(username, password, out UserPreferences preferences);
             _vm.SetSessionUserData(username, password, admin, false, userDecklists, preferences);
 
             SceneManager.LoadSceneAsync(_mainMenuScene);

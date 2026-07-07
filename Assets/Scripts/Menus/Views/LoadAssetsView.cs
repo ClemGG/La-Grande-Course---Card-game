@@ -1,12 +1,14 @@
+using Assets.Scripts.Database;
 using Assets.Scripts.Scenes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.Database
+namespace Assets.Scripts.Menus
 {
     /// <summary>
     /// Charge les assets de la base de données
     /// </summary>
+    [RequireComponent(typeof(LoadAssetsViewModel))]
     public class LoadAssetsView : MonoBehaviour
     {
         #region Variables Unity

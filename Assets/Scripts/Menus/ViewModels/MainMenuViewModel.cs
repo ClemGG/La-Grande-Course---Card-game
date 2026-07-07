@@ -3,7 +3,7 @@ using Assets.Scripts.Database;
 using Assets.Scripts.Extensions;
 using UnityEngine;
 
-namespace Assets.Scripts.MainMenu
+namespace Assets.Scripts.Menus
 {
     /// <summary>
     /// Chargé de la gestion du menu d'accueil

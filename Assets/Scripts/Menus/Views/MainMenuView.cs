@@ -1,16 +1,16 @@
 using System;
-using Assets.Scripts.Cards;
 using Assets.Scripts.Scenes;
 using Assets.Scripts.User;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.MainMenu
+namespace Assets.Scripts.Menus
 {
     /// <summary>
     /// Vue de l'écran d'accueil après la connexion du joueur
     /// </summary>
+    [RequireComponent(typeof(MainMenuViewModel))]
     public class MainMenuView : MonoBehaviour
     {
         #region Variables Unity

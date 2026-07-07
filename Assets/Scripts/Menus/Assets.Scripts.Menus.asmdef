@@ -1,11 +1,12 @@
 {
-    "name": "Assets.Scripts.MainMenu",
+    "name": "Assets.Scripts.Menus",
     "rootNamespace": "",
     "references": [
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
         "GUID:cc25f9943f069fd4ea7226d7f2040bff",
         "GUID:2e40640ed7c31e6458226ca328d4f94d",
         "GUID:3d59c1a043d71ad44bd2c09575813f81",
+        "GUID:f14e3c1120cbdac42bd3e3d24d03a6a5",
         "GUID:5c597321da8e9664aaef5796229a5422",
         "GUID:ac53c450ecff1e4439faeba3a8f8982e",
         "GUID:45bc9266abbb5ca46a524e7be01077a8"

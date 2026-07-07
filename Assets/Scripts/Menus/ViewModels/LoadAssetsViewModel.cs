@@ -1,7 +1,8 @@
 using System;
+using Assets.Scripts.Database;
 using UnityEngine;
 
-namespace Assets.Scripts.Database
+namespace Assets.Scripts.Menus
 {
     /// <summary>
     /// Contrôleur du LoadAssetsView

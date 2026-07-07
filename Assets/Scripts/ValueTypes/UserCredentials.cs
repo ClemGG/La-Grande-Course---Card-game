@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Scripts.User
+namespace Assets.Scripts.ValueTypes
 {
     /// <summary>
     /// Identifiants d'un joueur

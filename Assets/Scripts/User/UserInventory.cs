@@ -3,9 +3,9 @@ using Assets.Scripts.Cards;
 namespace Assets.Scripts.User
 {
     /// <summary>
-    /// Inventaire de cartes du joueur
+    /// Inventaire du joueur
     /// </summary>
-    public static class CardInventory
+    public static class UserInventory
     {
         /// <summary>
         /// Liste de cartes

@@ -6,7 +6,7 @@ namespace Assets.Scripts.Cards
     /// Asset référençant la liste de cartes composant un deck
     /// </summary>
     [CreateAssetMenu(fileName = "New Deck List", menuName = "Scriptable Objects/La Grande Course/Cards/Deck List")]
-    public sealed class DeckListSO : ScriptableObject
+    public sealed class DecklistSO : ScriptableObject
     {
         #region Propriétés
 
@@ -15,7 +15,7 @@ namespace Assets.Scripts.Cards
         /// </summary>
         [Tooltip("La recette")]
         [field: SerializeField]
-        public DeckList Value { get; private set; }
+        public Decklist Value { get; private set; }
 
         #endregion
     }
