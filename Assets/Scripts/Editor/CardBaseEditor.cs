@@ -23,6 +23,8 @@ namespace Assets.Scripts.Editor
         {
             base.OnInspectorGUI();
 
+            GUILayout.Space(10f);
+
             if (GUILayout.Button("Upload to Database"))
             {
                 OnSendBtnClick();

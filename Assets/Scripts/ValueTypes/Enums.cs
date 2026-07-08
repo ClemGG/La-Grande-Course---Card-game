@@ -21,9 +21,9 @@ namespace Assets.Scripts.ValueTypes
     /// </summary>
     public enum EquipCardType
     {
-        Mode,
-        Outfit,
-        Module
+        Mode = 0,
+        Outfit = 1,
+        Module = 2
     }
 
     /// <summary>

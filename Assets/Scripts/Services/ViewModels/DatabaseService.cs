@@ -148,6 +148,8 @@ namespace Assets.Scripts.Services
             GameAssets.RuseCards = Resources.LoadAll<RuseCardSO>("Cards/Ruses");
         }
 
+#if UNITY_EDITOR
+
         /// <summary>
         /// Crée ou màj la carte dans la bdd
         /// </summary>
@@ -155,18 +157,47 @@ namespace Assets.Scripts.Services
         /// <param name="onComplete">Appelée une fois l'opération terminée</param>
         public static async Awaitable CreateOrUpdateCardAsync(CardBaseSO card, Action onComplete)
         {
-            string tableName = card switch
-            {
-                RacerCardSO => Constants.RACERS_CARDS_TABLE_NAME,
-                TrackCardSO => Constants.TRACK_CARDS_TABLE_NAME,
-                SkillCardSO => Constants.SKILL_CARDS_TABLE_NAME,
-                EquipmentCardSO => Constants.EQUIP_CARDS_TABLE_NAME,
-                RuseCardSO => Constants.RUSE_CARDS_TABLE_NAME,
-                _ => throw new Exception(string.Format(Constants.CARD_TYPE_NOT_IMPLEMENTED_ERR, card.Name, card.GetType())),
-            };
-
             WWWForm form = new();
-            form.AddField("card_type_table_name", tableName);
+
+            form.AddField("cardName", card.Name);
+            form.AddField("effectDesc", card.EffectDescription);
+            form.AddField("flavourDesc", card.FlavourDescription);
+            form.AddField("purity", (int)card.Purity);
+
+            switch (card)
+            {
+                case RacerCardSO racer:
+                    form.AddField("cardTypeTableName", Constants.RACERS_CARDS_TABLE_NAME);
+                    form.AddField("speed", racer.Stats.Speed);
+                    form.AddField("style", racer.Stats.Style);
+                    form.AddField("technique", racer.Stats.Technique);
+                    break;
+                case TrackCardSO track:
+                    form.AddField("cardTypeTableName", Constants.TRACK_CARDS_TABLE_NAME);
+                    form.AddField("speed", track.Stats.Speed);
+                    form.AddField("style", track.Stats.Style);
+                    form.AddField("technique", track.Stats.Technique);
+                    break;
+                case SkillCardSO skill:
+                    form.AddField("cardTypeTableName", Constants.SKILL_CARDS_TABLE_NAME);
+                    break;
+                case EquipmentCardSO equip:
+                    form.AddField("cardTypeTableName", Constants.EQUIP_CARDS_TABLE_NAME);
+                    form.AddField("type", (int)equip.Type);
+                    form.AddField("speed", equip.Stats.Speed);
+                    form.AddField("style", equip.Stats.Style);
+                    form.AddField("technique", equip.Stats.Technique);
+                    break;
+                case RuseCardSO ruse:
+                    form.AddField("cardTypeTableName", Constants.RUSE_CARDS_TABLE_NAME);
+                    form.AddField("speed", ruse.Stats.Speed);
+                    form.AddField("style", ruse.Stats.Style);
+                    form.AddField("technique", ruse.Stats.Technique);
+                    break;
+                default:
+                    throw new Exception(string.Format(Constants.CARD_TYPE_NOT_IMPLEMENTED_ERR, card.Name, card.GetType()));
+            }
+
 
             using UnityWebRequest request = UnityWebRequest.Post(Constants.CREATE_OR_UPDATE_CARD_URI, form);
             await Awaitable.FromAsyncOperation(request.SendWebRequest(), Application.exitCancellationToken);
@@ -195,6 +226,8 @@ namespace Assets.Scripts.Services
                 onComplete?.Invoke();
             }
         }
+
+#endif
 
         #endregion
     }
