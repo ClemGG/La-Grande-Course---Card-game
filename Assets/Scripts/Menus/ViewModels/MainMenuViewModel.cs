@@ -1,6 +1,6 @@
 using System;
-using Assets.Scripts.Database;
 using Assets.Scripts.Extensions;
+using Assets.Scripts.Services;
 using UnityEngine;
 
 namespace Assets.Scripts.Menus
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Menus
         public void Logout(string username, string decklistsJson, Action onComplete, Action<Exception> onError)
         {
             // TAF: Déconnecter l'utilisateur et enregistrer ses changements
-            DatabaseHelper.LogoutAsync(username, decklistsJson, onComplete).WaitForResult(onError);
+            DatabaseService.LogoutAsync(username, decklistsJson, onComplete).WaitForResult(onError);
         }
 
         #endregion

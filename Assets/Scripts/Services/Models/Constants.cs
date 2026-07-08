@@ -1,12 +1,21 @@
 using UnityEngine;
 
-namespace Assets.Scripts.User
+namespace Assets.Scripts.Services
 {
     /// <summary>
     /// Constantes
     /// </summary>
     internal class Constants
     {
+        #region Log Msgs
+
+        /// <summary>
+        /// Chemin d'accès par défaut du fichier contenant les infos du joueur (login, préférences...)
+        /// </summary>
+        internal const string CARD_TYPE_NOT_IMPLEMENTED_ERR = "Erreur: La carte \"{0}\" ne peut pas être msie en ligne car son type \"{1}\" n'est pas encore implémenté.";
+
+        #endregion
+
         #region IO
 
         /// <summary>
@@ -33,6 +42,70 @@ namespace Assets.Scripts.User
         /// Chemin d'accès complet
         /// </summary>
         internal static readonly string PREFERENCES_PATH = $"{Constants.DEFAULT_USER_CACHE_DIR_PATH}{Constants.DEFAULT_PREFERENCES_CACHE_FILE_NAME}";
+
+        #endregion
+
+        #region SQL
+
+        /// <summary>
+        /// Uri d'accès au script d'inscription du joueur
+        /// </summary>
+        internal const string REGISTER_URI = "http://localhost/sqlconnect/register.php";
+
+        /// <summary>
+        /// Uri d'accès au script de connexion du joueur
+        /// </summary>
+        internal const string LOGIN_URI = "http://localhost/sqlconnect/login.php";
+
+        /// <summary>
+        /// Uri d'accès au script de déconnexion du joueur
+        /// </summary>
+        internal const string LOGOUT_URI = "http://localhost/sqlconnect/logout.php";
+
+        /// <summary>
+        /// Uri d'accès au script de màj des decklists du joueur
+        /// </summary>
+        internal const string PUT_DECKLISTS_URI = "http://localhost/sqlconnect/put_decklists.php";
+
+        /// <summary>
+        /// Uri d'accès au script de récupération des decklists du joueur
+        /// </summary>
+        internal const string GET_DECKLISTS_URI = "http://localhost/sqlconnect/get_decklists.php";
+
+        /// <summary>
+        /// Uri d'accès au script de màj de l'inventaire du joueur
+        /// </summary>
+        internal const string CREATE_OR_UPDATE_CARD_URI = "http://localhost/sqlconnect/create_or_update_card.php";
+
+        /// <summary>
+        /// Uri d'accès au script de mise en ligne d'une carte
+        /// </summary>
+        internal const string GET_CARD_INVENTORY_URI = "http://localhost/sqlconnect/get_card_inventory.php";
+
+        /// <summary>
+        /// Nom de la table des cartes Coureur
+        /// </summary>
+        internal const string RACERS_CARDS_TABLE_NAME = "racer_cards_table";
+
+        /// <summary>
+        /// Nom de la table des cartes Piste
+        /// </summary>
+        internal const string TRACK_CARDS_TABLE_NAME = "track_cards_table";
+
+        /// <summary>
+        /// Nom de la table des cartes Compétence
+        /// </summary>
+        internal const string SKILL_CARDS_TABLE_NAME = "skill_cards_table";
+
+        /// <summary>
+        /// Nom de la table des cartes Equipement
+        /// </summary>
+        internal const string EQUIP_CARDS_TABLE_NAME = "equip_cards_table";
+
+        /// <summary>
+        /// Nom de la table des cartes Ruse
+        /// </summary>
+        internal const string RUSE_CARDS_TABLE_NAME = "ruse_cards_table";
 
         #endregion
     }

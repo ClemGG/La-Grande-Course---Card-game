@@ -1,14 +1,15 @@
 using System;
 using Assets.Scripts.Cards;
+using Assets.Scripts.Database;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Assets.Scripts.Database
+namespace Assets.Scripts.Services
 {
     /// <summary>
     /// Contient les méthodes CRUD d'interaction avec la BDD
     /// </summary>
-    public static class DatabaseHelper
+    public static class DatabaseService
     {
         #region Méthodes statiques publiques
 
@@ -97,9 +98,9 @@ namespace Assets.Scripts.Database
         /// <summary>
         /// Déconnecte l'utilisateur
         /// </summary>
-        /// <param name="onComplete">Appelée une fois l'opération terminée</param>
         /// <param name="username">Nom d'utilisateur</param>
         /// <param name="decklistsJson">Decks du joueur</param>
+        /// <param name="onComplete">Appelée une fois l'opération terminée</param>
         public static async Awaitable LogoutAsync(string username, string decklistsJson, Action onComplete)
         {
             WWWForm form = new();
@@ -145,6 +146,54 @@ namespace Assets.Scripts.Database
             GameAssets.SkillCards = Resources.LoadAll<SkillCardSO>("Cards/Skills");
             GameAssets.EquipmentCards = Resources.LoadAll<EquipmentCardSO>("Cards/Equipments");
             GameAssets.RuseCards = Resources.LoadAll<RuseCardSO>("Cards/Ruses");
+        }
+
+        /// <summary>
+        /// Crée ou màj la carte dans la bdd
+        /// </summary>
+        /// <param name="card">La carte à mettre en ligne</param>
+        /// <param name="onComplete">Appelée une fois l'opération terminée</param>
+        public static async Awaitable CreateOrUpdateCardAsync(CardBaseSO card, Action onComplete)
+        {
+            string tableName = card switch
+            {
+                RacerCardSO => Constants.RACERS_CARDS_TABLE_NAME,
+                TrackCardSO => Constants.TRACK_CARDS_TABLE_NAME,
+                SkillCardSO => Constants.SKILL_CARDS_TABLE_NAME,
+                EquipmentCardSO => Constants.EQUIP_CARDS_TABLE_NAME,
+                RuseCardSO => Constants.RUSE_CARDS_TABLE_NAME,
+                _ => throw new Exception(string.Format(Constants.CARD_TYPE_NOT_IMPLEMENTED_ERR, card.Name, card.GetType())),
+            };
+
+            WWWForm form = new();
+            form.AddField("card_type_table_name", tableName);
+
+            using UnityWebRequest request = UnityWebRequest.Post(Constants.CREATE_OR_UPDATE_CARD_URI, form);
+            await Awaitable.FromAsyncOperation(request.SendWebRequest(), Application.exitCancellationToken);
+
+            //switch (request.result)
+            //{
+            //    case UnityWebRequest.Result.ConnectionError:
+            //        UnityEngine.Debug.Log("Connection Error: " + request.error);
+            //        break;
+            //    case UnityWebRequest.Result.ProtocolError:
+            //        UnityEngine.Debug.Log("Protocol Error: " + request.error);
+            //        break;
+            //    case UnityWebRequest.Result.DataProcessingError:
+            //        UnityEngine.Debug.Log("Data Processing Error: " + request.error);
+            //        break;
+            //}
+
+            if (request.result != UnityWebRequest.Result.Success)
+                throw new Exception(request.error);
+            else if (!string.IsNullOrEmpty(request.downloadHandler.text))
+            {
+                throw new Exception(request.downloadHandler.text);
+            }
+            else
+            {
+                onComplete?.Invoke();
+            }
         }
 
         #endregion

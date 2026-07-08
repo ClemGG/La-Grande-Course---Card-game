@@ -1,5 +1,5 @@
 using System;
-using Assets.Scripts.Database;
+using Assets.Scripts.Services;
 using UnityEngine;
 
 namespace Assets.Scripts.Menus
@@ -17,7 +17,7 @@ namespace Assets.Scripts.Menus
         /// <param name="onComplete">Appelée une fois les assets chargées</param>
         public void LoadAssets(Action onComplete)
         {
-            DatabaseHelper.LoadCardsAsync();
+            DatabaseService.LoadCardsAsync();
             onComplete?.Invoke();
         }
 

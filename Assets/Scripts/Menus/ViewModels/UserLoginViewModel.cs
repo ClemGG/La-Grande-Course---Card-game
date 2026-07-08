@@ -1,5 +1,4 @@
 using System;
-using Assets.Scripts.Database;
 using Assets.Scripts.Extensions;
 using Assets.Scripts.Services;
 using Assets.Scripts.User;
@@ -25,7 +24,7 @@ namespace Assets.Scripts.Menus
         /// <param name="onError">Appelée quand une exception est levée</param>
         internal void Register(string username, string password, bool admin, Action onComplete, Action<Exception> onError)
         {
-            DatabaseHelper.RegisterAsync(username, password, admin, onComplete).WaitForResult(onError);
+            DatabaseService.RegisterAsync(username, password, admin, onComplete).WaitForResult(onError);
         }
 
         /// <summary>
@@ -37,7 +36,7 @@ namespace Assets.Scripts.Menus
         /// <param name="onError">Appelée quand une exception est levée</param>
         internal void Login(string username, string password, Action<string> onComplete, Action<Exception> onError)
         {
-            DatabaseHelper.LoginAsync(username, password, onComplete).WaitForResult(onError);
+            DatabaseService.LoginAsync(username, password, onComplete).WaitForResult(onError);
         }
 
         /// <summary>
