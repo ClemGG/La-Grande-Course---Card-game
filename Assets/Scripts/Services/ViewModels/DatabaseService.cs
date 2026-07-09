@@ -159,6 +159,7 @@ namespace Assets.Scripts.Services
         {
             WWWForm form = new();
 
+            form.AddField("ID", card.ID);
             form.AddField("cardName", card.Name);
             form.AddField("effectDesc", card.EffectDescription);
             form.AddField("flavourDesc", card.FlavourDescription);

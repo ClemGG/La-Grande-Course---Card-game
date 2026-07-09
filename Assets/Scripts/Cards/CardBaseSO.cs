@@ -1,5 +1,5 @@
+using Assets.Scripts.Attributes;
 using Assets.Scripts.ValueTypes;
-using Unity.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Cards
@@ -9,6 +9,13 @@ namespace Assets.Scripts.Cards
     /// </summary>
     public abstract class CardBaseSO : ScriptableObject
     {
+        /// <summary>
+        /// L'ID de la carte dans la bdd
+        /// </summary>
+        [Tooltip("L'ID de la carte dans la bdd")]
+        [field: SerializeField, GreyOut]
+        public int ID { get; private set; } = -1;
+
         /// <summary>
         /// Le nom de la carte
         /// </summary>

@@ -63,24 +63,9 @@ namespace Assets.Scripts.Services
         internal const string LOGOUT_URI = "http://localhost/sqlconnect/logout.php";
 
         /// <summary>
-        /// Uri d'accès au script de màj des decklists du joueur
-        /// </summary>
-        internal const string PUT_DECKLISTS_URI = "http://localhost/sqlconnect/put_decklists.php";
-
-        /// <summary>
-        /// Uri d'accès au script de récupération des decklists du joueur
-        /// </summary>
-        internal const string GET_DECKLISTS_URI = "http://localhost/sqlconnect/get_decklists.php";
-
-        /// <summary>
         /// Uri d'accès au script de màj de l'inventaire du joueur
         /// </summary>
-        internal const string CREATE_OR_UPDATE_CARD_URI = "http://localhost/sqlconnect/create_or_update_card.php";
-
-        /// <summary>
-        /// Uri d'accès au script de mise en ligne d'une carte
-        /// </summary>
-        internal const string GET_CARD_INVENTORY_URI = "http://localhost/sqlconnect/get_card_inventory.php";
+        internal const string CREATE_OR_UPDATE_CARD_URI = "http://localhost/sqlconnect/createOrUpdateCard.php";
 
         /// <summary>
         /// Nom de la table des cartes Coureur
